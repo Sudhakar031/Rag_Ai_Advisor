@@ -1,0 +1,108 @@
+.finalVerdict {
+  padding: 96px 24px;
+  background: #f8fcfe;
+}
+
+.finalVerdictContainer {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.finalVerdictCard {
+  position: relative;
+  overflow: hidden;
+  padding: 64px;
+  border: 1px solid rgba(53, 199, 138, 0.2);
+  border-radius: 32px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0, 166, 214, 0.14),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(53, 199, 138, 0.1),
+      #ffffff 55%
+    );
+  box-shadow: 0 20px 60px rgba(19, 38, 75, 0.08);
+}
+
+.finalVerdictIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00a6d6, #35c78a);
+}
+
+.finalVerdictEyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.finalVerdictCard h2 {
+  margin: 0;
+  color: #13264b;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.finalVerdictCard p {
+  max-width: 800px;
+  margin: 22px 0 0;
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.finalVerdictLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  color: #13264b;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.finalVerdictLink:hover {
+  color: #00a6d6;
+}
+
+@media (max-width: 768px) {
+  .finalVerdict {
+    padding: 72px 20px;
+  }
+
+  .finalVerdictCard {
+    padding: 40px 28px;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .finalVerdict {
+    padding: 56px 16px;
+  }
+
+  .finalVerdictCard {
+    padding: 32px 22px;
+  }
+
+  .finalVerdictCard p {
+    font-size: 16px;
+  }
+}

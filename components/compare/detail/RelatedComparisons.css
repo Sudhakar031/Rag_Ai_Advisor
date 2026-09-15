@@ -1,0 +1,125 @@
+.relatedComparisons {
+  padding: 96px 24px;
+  background: #f8fcfe;
+}
+
+.relatedComparisonsContainer {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.relatedComparisonsHeader {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.relatedComparisonsEyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.relatedComparisonsHeader h2 {
+  margin: 0;
+  color: #13264b;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.relatedComparisonsHeader p {
+  margin: 18px 0 0;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.relatedComparisonsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.relatedComparisonCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  padding: 32px;
+  border: 1px solid #e8edf4;
+  border-radius: 24px;
+  background: #ffffff;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.relatedComparisonCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 166, 214, 0.3);
+  box-shadow: 0 20px 50px rgba(19, 38, 75, 0.08);
+}
+
+.relatedComparisonCategory {
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.relatedComparisonCard h3 {
+  margin: 14px 0 12px;
+  color: #13264b;
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+.relatedComparisonCard p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.relatedComparisonLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  color: #13264b;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.relatedComparisonCard:hover .relatedComparisonLink {
+  color: #00a6d6;
+}
+
+@media (max-width: 768px) {
+  .relatedComparisons {
+    padding: 72px 20px;
+  }
+
+  .relatedComparisonsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .relatedComparisons {
+    padding: 56px 16px;
+  }
+
+  .relatedComparisonCard {
+    min-height: auto;
+    padding: 24px;
+  }
+}

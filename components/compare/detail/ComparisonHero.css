@@ -1,0 +1,619 @@
+.detailHero {
+  position: relative;
+  width: 100%;
+  padding: 54px 0 100px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 5% 10%,
+      rgba(0, 166, 214, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 95% 85%,
+      rgba(53, 199, 138, 0.1),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #f8fcfe 0%,
+      #ffffff 100%
+    );
+
+  font-family: var(--font-manrope), "Manrope", Arial, sans-serif;
+}
+
+.detailHeroContainer {
+  width: min(1420px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.detailHeroBreadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  margin-bottom: 64px;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.detailHeroBreadcrumb a {
+  color: #64748b;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.detailHeroBreadcrumb a:hover {
+  color: #00a6d6;
+}
+
+.detailHeroBreadcrumb strong {
+  color: #13264b;
+  font-weight: 700;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.detailHeroGrid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(520px, 1.1fr);
+
+  align-items: center;
+  gap: 80px;
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.detailHeroContent {
+  max-width: 680px;
+}
+
+.detailHeroBadge {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 24px;
+  padding: 9px 15px;
+
+  color: #009bc9;
+
+  background: rgba(0, 166, 214, 0.07);
+
+  border: 1px solid rgba(0, 166, 214, 0.15);
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+/* TITLE */
+
+.detailHeroContent h1 {
+  margin: 0;
+
+  color: #13264b;
+
+  font-size: clamp(54px, 6vw, 82px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -4px;
+}
+
+.detailHeroContent h1 span {
+  display: inline-block;
+
+  margin-left: 8px;
+
+  background: linear-gradient(
+    90deg,
+    #00a6d6,
+    #35c78a
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  font-size: 0.55em;
+  letter-spacing: -1px;
+}
+
+/* LEAD */
+
+.detailHeroLead {
+  max-width: 650px;
+
+  margin: 30px 0 0;
+
+  color: #475569;
+
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+/* DESCRIPTION */
+
+.detailHeroDescription {
+  max-width: 620px;
+
+  margin: 16px 0 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* =========================
+   META
+========================= */
+
+.detailHeroMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 18px;
+
+  margin-top: 28px;
+}
+
+.detailHeroMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #64748b;
+
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.detailHeroMeta svg {
+  color: #35c78a;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.detailHeroActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 14px;
+
+  margin-top: 36px;
+}
+
+.detailHeroPrimary,
+.detailHeroSecondary {
+  min-height: 56px;
+  padding: 0 23px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 750;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.detailHeroPrimary {
+  color: #ffffff;
+
+  background: linear-gradient(
+    135deg,
+    #00a6d6,
+    #35c78a
+  );
+
+  box-shadow:
+    0 14px 30px rgba(0, 166, 214, 0.18);
+}
+
+.detailHeroPrimary:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 20px 38px rgba(0, 166, 214, 0.25);
+}
+
+.detailHeroSecondary {
+  color: #13264b;
+  background: #ffffff;
+
+  border: 1px solid #dce6ee;
+}
+
+.detailHeroSecondary:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(0, 166, 214, 0.3);
+
+  box-shadow:
+    0 12px 28px rgba(19, 38, 75, 0.07);
+}
+
+/* =========================
+   COMPARISON VISUAL
+========================= */
+
+.detailHeroVisual {
+  width: 100%;
+}
+
+.detailComparisonPanel {
+  position: relative;
+
+  width: 100%;
+  padding: 24px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  border: 1px solid #e0eaf1;
+  border-radius: 28px;
+
+  box-shadow:
+    0 30px 70px rgba(19, 38, 75, 0.1);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* TOP LABEL */
+
+.detailComparisonLabel {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 20px;
+
+  color: #64748b;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.detailComparisonLabel svg {
+  color: #00a6d6;
+}
+
+/* PLATFORM GRID */
+
+.detailPlatformGrid {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.detailPlatform {
+  position: relative;
+
+  min-height: 350px;
+
+  padding: 28px 24px;
+
+  border-radius: 20px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.detailPlatform:hover {
+  transform: translateY(-5px);
+}
+
+.detailPlatformHireko {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0, 166, 214, 0.09),
+      rgba(53, 199, 138, 0.08)
+    );
+
+  border: 1px solid rgba(0, 166, 214, 0.18);
+}
+
+.detailPlatformCompetitor {
+  background: #f8fafc;
+
+  border: 1px solid #e5eaf0;
+}
+
+/* LOGO */
+
+.detailPlatformLogo {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 24px;
+
+  border-radius: 15px;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.detailHirekoLogo {
+  color: #ffffff;
+
+  background: linear-gradient(
+    135deg,
+    #00a6d6,
+    #35c78a
+  );
+
+  box-shadow:
+    0 10px 24px rgba(0, 166, 214, 0.2);
+}
+
+.detailCompetitorLogo {
+  color: #13264b;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e8ef;
+
+  box-shadow:
+    0 8px 20px rgba(19, 38, 75, 0.06);
+}
+
+/* PLATFORM CONTENT */
+
+.detailPlatformTag {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #00a6d6;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.detailPlatform h2 {
+  margin: 0;
+
+  color: #13264b;
+
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.detailPlatform p {
+  margin: 15px 0 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* BEST FOR */
+
+.detailPlatformBest {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  margin-top: 24px;
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(19, 38, 75, 0.08);
+
+  color: #13264b;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.detailPlatformBest svg {
+  flex-shrink: 0;
+
+  color: #35c78a;
+}
+
+/* VS */
+
+.detailVsBadge {
+  position: absolute;
+  z-index: 5;
+
+  top: 50%;
+  left: 50%;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  transform: translate(-50%, -50%);
+
+  color: #13264b;
+  background: #ffffff;
+
+  border: 1px solid #e1e8ef;
+  border-radius: 50%;
+
+  box-shadow:
+    0 8px 20px rgba(19, 38, 75, 0.12);
+
+  font-size: 11px;
+  font-weight: 850;
+}
+
+/* PANEL FOOTER */
+
+.detailComparisonFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-top: 20px;
+  padding: 0 4px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.detailComparisonStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.detailComparisonStatus > span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #35c78a;
+
+  box-shadow:
+    0 0 0 4px rgba(53, 199, 138, 0.1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1150px) {
+  .detailHeroGrid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .detailHeroContent {
+    max-width: 800px;
+  }
+
+  .detailHeroVisual {
+    max-width: 850px;
+  }
+}
+
+@media (max-width: 768px) {
+  .detailHero {
+    padding: 36px 0 80px;
+  }
+
+  .detailHeroContainer {
+    width: calc(100% - 40px);
+  }
+
+  .detailHeroBreadcrumb {
+    margin-bottom: 44px;
+  }
+
+  .detailHeroContent h1 {
+    font-size: clamp(48px, 14vw, 68px);
+    letter-spacing: -3px;
+  }
+
+  .detailHeroLead {
+    font-size: 17px;
+  }
+
+  .detailPlatformGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .detailVsBadge {
+    top: 50%;
+  }
+
+  .detailPlatform {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .detailHeroContainer {
+    width: calc(100% - 32px);
+  }
+
+  .detailHeroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .detailHeroPrimary,
+  .detailHeroSecondary {
+    width: 100%;
+  }
+
+  .detailComparisonPanel {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .detailPlatform {
+    padding: 24px 20px;
+  }
+
+  .detailVsBadge {
+    display: none;
+  }
+
+  .detailComparisonFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

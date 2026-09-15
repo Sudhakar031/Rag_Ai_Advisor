@@ -1,0 +1,215 @@
+/* 
+ NOTE:
+ This file is a starter responsive Hero.css matched to your Hero.tsx.
+ Replace your existing Hero.css with this file.
+*/
+
+.compareHero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#f8fcfe 0%,#ffffff 100%);
+  padding:88px 0;
+}
+
+.compareHeroContainer{
+  width:min(1280px,calc(100% - 48px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:64px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.compareHeroGlow{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(120px);
+  opacity:.28;
+  pointer-events:none;
+}
+
+.compareHeroGlowBlue{
+  width:420px;
+  height:420px;
+  left:-120px;
+  top:-120px;
+  background:#00a6d6;
+}
+
+.compareHeroGlowGreen{
+  width:380px;
+  height:380px;
+  right:-80px;
+  bottom:-100px;
+  background:#35c78a;
+}
+
+.compareHeroContent{
+  display:flex;
+  flex-direction:column;
+  color:#13264b;
+}
+
+.compareHeroBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  width:max-content;
+  padding:10px 18px;
+  border-radius:999px;
+  border:1px solid rgba(0,166,214,.18);
+  background:rgba(0,166,214,.08);
+  color:#00a6d6;
+  font-size:14px;
+  font-weight:700;
+}
+
+.compareHeroTitle{
+  margin:28px 0 0;
+  font-size:clamp(48px,6vw,64px);
+  line-height:1.05;
+  font-weight:800;
+  letter-spacing:-2px;
+  color:#13264b;
+}
+
+.compareHeroTitle span{
+  color:#00a6d6;
+}
+
+.compareHeroDescription{
+  margin-top:24px;
+  max-width:640px;
+  font-size:20px;
+  line-height:1.8;
+  color:#64748b;
+}
+
+.compareHeroActions{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:36px;
+}
+
+.compareHeroPrimaryButton,
+.compareHeroSecondaryButton{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:56px;
+  padding:0 28px;
+  border-radius:16px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.compareHeroPrimaryButton{
+  background:linear-gradient(135deg,#00a6d6,#35c78a);
+  color:#fff;
+}
+
+.compareHeroSecondaryButton{
+  background:#fff;
+  border:1px solid #dbe7f2;
+  color:#13264b;
+}
+
+.compareHeroTrust{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-top:32px;
+}
+
+.compareHeroTrustItem{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#13264b;
+  font-weight:600;
+}
+
+.compareHeroTrustItem svg{
+  color:#35c78a;
+}
+
+.compareHeroVisual{
+  display:flex;
+  justify-content:center;
+}
+
+.compareHeroImageFrame{
+  width:100%;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 24px 60px rgba(15,23,42,.10);
+}
+
+.compareHeroImage{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.compareHeroImageOverlay{
+  display:none;
+}
+
+@media (max-width:1024px){
+  .compareHeroContainer{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+}
+
+@media (max-width:640px){
+  .compareHero{
+    padding:56px 0;
+  }
+
+  .compareHeroContainer{
+    width:100%;
+    padding:0 20px;
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .compareHeroTitle{
+    font-size:40px;
+    line-height:1.08;
+    letter-spacing:-1px;
+  }
+
+  .compareHeroDescription{
+    font-size:17px;
+    line-height:1.7;
+  }
+
+  .compareHeroActions{
+    flex-direction:column;
+    margin-top:24px;
+  }
+
+  .compareHeroPrimaryButton,
+  .compareHeroSecondaryButton{
+    width:100%;
+  }
+
+  .compareHeroTrust{
+    flex-direction:column;
+    gap:14px;
+    margin-top:24px;
+  }
+
+  .compareHeroVisual{
+    margin-top:0;
+  }
+
+  .compareHeroImageFrame{
+    border-radius:20px;
+  }
+}

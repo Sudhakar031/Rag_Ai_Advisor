@@ -1,0 +1,251 @@
+.pricingComparison {
+  width: 100%;
+  padding: 100px 0;
+  background: #ffffff;
+  font-family: var(--font-manrope), "Manrope", Arial, sans-serif;
+}
+
+.pricingComparisonContainer {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+.pricingComparisonHeader {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+
+.pricingComparisonEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pricingComparisonHeader h2 {
+  margin: 0;
+  color: #13264b;
+
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+}
+
+.pricingComparisonHeader p {
+  max-width: 680px;
+  margin: 18px 0 0;
+
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* TABLE CARD */
+
+.pricingComparisonCard {
+  overflow: hidden;
+  border: 1px solid #e8edf4;
+  border-radius: 22px;
+  background: #ffffff;
+
+  box-shadow: 0 16px 45px rgba(19, 38, 75, 0.06);
+}
+
+/* TABLE HEADER */
+
+.pricingComparisonTableHeader {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  align-items: stretch;
+
+  background: #f8fcfe;
+  border-bottom: 1px solid #e8edf4;
+}
+
+.pricingComparisonTableHeader > div {
+  min-height: 100px;
+  padding: 24px 28px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  color: #13264b;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.pricingComparisonTableHeader > div:not(:last-child) {
+  border-right: 1px solid #e8edf4;
+}
+
+.pricingComparisonTableHeader small {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pricingHirekoHeader {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 166, 214, 0.08),
+    rgba(53, 199, 138, 0.08)
+  );
+}
+
+.pricingHirekoHeader span {
+  color: #00a6d6;
+}
+
+/* ROWS */
+
+.pricingComparisonRow {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  min-height: 82px;
+}
+
+.pricingComparisonRow:not(:last-child) {
+  border-bottom: 1px solid #edf1f5;
+}
+
+.pricingComparisonRow > div {
+  padding: 22px 28px;
+
+  display: flex;
+  align-items: center;
+}
+
+.pricingComparisonRow > div:not(:last-child) {
+  border-right: 1px solid #edf1f5;
+}
+
+/* LABEL */
+
+.pricingLabel {
+  color: #13264b;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+/* VALUES */
+
+.pricingValue {
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.pricingHirekoValue {
+  gap: 9px;
+  color: #13264b;
+
+  background: linear-gradient(
+    135deg,
+    rgba(0, 166, 214, 0.025),
+    rgba(53, 199, 138, 0.025)
+  );
+}
+
+.pricingHirekoValue svg {
+  flex-shrink: 0;
+  color: #35c78a;
+}
+
+/* HOVER */
+
+.pricingComparisonRow {
+  transition: background 0.2s ease;
+}
+
+.pricingComparisonRow:hover {
+  background: #fbfdff;
+}
+
+/* DISCLAIMER */
+
+.pricingComparisonDisclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  margin-top: 22px;
+  padding: 18px 20px;
+
+  border: 1px solid #e8edf4;
+  border-radius: 14px;
+  background: #f8fcfe;
+}
+
+.pricingComparisonDisclaimer svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #00a6d6;
+}
+
+.pricingComparisonDisclaimer p {
+  margin: 0;
+
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .pricingComparisonContainer {
+    width: min(100% - 48px, 1200px);
+  }
+
+  .pricingComparisonCard {
+    overflow-x: auto;
+  }
+
+  .pricingComparisonTableHeader,
+  .pricingComparisonRow {
+    min-width: 760px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pricingComparison {
+    padding: 72px 0;
+  }
+
+  .pricingComparisonContainer {
+    width: calc(100% - 32px);
+  }
+
+  .pricingComparisonHeader {
+    margin-bottom: 34px;
+  }
+
+  .pricingComparisonHeader h2 {
+    font-size: 34px;
+    letter-spacing: -1.2px;
+  }
+
+  .pricingComparisonHeader p {
+    font-size: 16px;
+  }
+
+  .pricingComparisonCard {
+    border-radius: 18px;
+  }
+
+  .pricingComparisonDisclaimer {
+    padding: 16px;
+  }
+}   

@@ -1,0 +1,112 @@
+.comparisonOverview {
+  width: 100%;
+  padding: 70px 0 32px;
+  background: #ffffff;
+  font-family: var(--font-manrope), "Manrope", Arial, sans-serif;
+}
+
+.comparisonOverviewContainer {
+  width: min(1240px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.comparisonOverviewCard {
+  position: relative;
+  padding: 42px 46px;
+  overflow: hidden;
+
+  border: 1px solid #dce9ee;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(53, 199, 138, 0.09),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fbfeff 55%,
+      #f5fcfa 100%
+    );
+
+  box-shadow: 0 18px 50px rgba(19, 38, 75, 0.06);
+}
+
+.comparisonOverviewCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 46px;
+  width: 90px;
+  height: 3px;
+
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00a6d6, #35c78a);
+}
+
+.comparisonOverviewEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 18px;
+
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.comparisonOverviewCard h2 {
+  max-width: 900px;
+  margin: 0;
+
+  color: #13264b;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+}
+
+.comparisonOverviewCard h2 span {
+  background: linear-gradient(90deg, #00a6d6, #35c78a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.comparisonOverviewCard p {
+  max-width: 1050px;
+  margin: 22px 0 0;
+
+  color: #5f7089;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .comparisonOverview {
+    padding: 50px 0 24px;
+  }
+
+  .comparisonOverviewContainer {
+    width: calc(100% - 32px);
+  }
+
+  .comparisonOverviewCard {
+    padding: 32px 24px;
+    border-radius: 18px;
+  }
+
+  .comparisonOverviewCard::before {
+    left: 24px;
+  }
+
+  .comparisonOverviewCard p {
+    font-size: 15px;
+  }
+}

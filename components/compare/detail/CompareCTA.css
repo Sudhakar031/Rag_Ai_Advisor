@@ -1,0 +1,167 @@
+.compareCTA {
+  padding: 96px 24px;
+  background: #ffffff;
+}
+
+.compareCTAContainer {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.compareCTACard {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 48px;
+  border: 1px solid rgba(53, 199, 138, 0.22);
+  border-radius: 32px;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(0, 166, 214, 0.14),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(53, 199, 138, 0.16),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #f4fcff 0%,
+      #ffffff 50%,
+      #f3fdf8 100%
+    );
+  box-shadow: 0 24px 70px rgba(19, 38, 75, 0.08);
+}
+
+.compareCTAIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 22px;
+  border-radius: 16px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00a6d6, #35c78a);
+  box-shadow: 0 12px 30px rgba(0, 166, 214, 0.2);
+}
+
+.compareCTAEyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.compareCTACard h2 {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #13264b;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.compareCTACard p {
+  max-width: 680px;
+  margin: 22px auto 0;
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.compareCTAActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.compareCTAPrimary,
+.compareCTASecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.compareCTAPrimary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #00a6d6, #35c78a);
+  box-shadow: 0 12px 28px rgba(0, 166, 214, 0.2);
+}
+
+.compareCTAPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 166, 214, 0.26);
+}
+
+.compareCTASecondary {
+  border: 1px solid #dce5ed;
+  color: #13264b;
+  background: #ffffff;
+}
+
+.compareCTASecondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 166, 214, 0.35);
+  background: #f8fcfe;
+}
+
+@media (max-width: 768px) {
+  .compareCTA {
+    padding: 72px 20px;
+  }
+
+  .compareCTACard {
+    padding: 56px 28px;
+    border-radius: 26px;
+  }
+
+  .compareCTACard p {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .compareCTA {
+    padding: 56px 16px;
+  }
+
+  .compareCTACard {
+    padding: 44px 20px;
+    border-radius: 22px;
+  }
+
+  .compareCTACard h2 {
+    font-size: 34px;
+  }
+
+  .compareCTAActions {
+    flex-direction: column;
+  }
+
+  .compareCTAPrimary,
+  .compareCTASecondary {
+    width: 100%;
+  }
+}

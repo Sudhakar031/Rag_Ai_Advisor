@@ -1,0 +1,148 @@
+.whyCompare {
+  width: 100%;
+  padding: 0 0 88px;
+  background: #ffffff;
+}
+
+.whyCompareContainer {
+  width: min(1420px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 38px 42px 40px;
+  border: 1px solid #e8edf4;
+  border-radius: 26px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 166, 214, 0.045) 0%,
+      rgba(255, 255, 255, 1) 48%,
+      rgba(53, 199, 138, 0.045) 100%
+    );
+  box-shadow: 0 18px 50px rgba(19, 38, 75, 0.05);
+}
+
+.whyCompareHeader {
+  max-width: 720px;
+  margin-bottom: 34px;
+}
+
+.whyCompareEyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #00a6d6;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.whyCompareHeader h2 {
+  margin: 0;
+  color: #13264b;
+  font-size: clamp(25px, 2.2vw, 34px);
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+}
+
+.whyCompareGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.whyCompareItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  padding: 6px 34px;
+}
+
+.whyCompareItem:first-child {
+  padding-left: 0;
+}
+
+.whyCompareItem:last-child {
+  padding-right: 0;
+}
+
+.whyCompareItem + .whyCompareItem {
+  border-left: 1px solid #e8edf4;
+}
+
+.whyCompareIcon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: #00a6d6;
+  background: rgba(0, 166, 214, 0.08);
+  border: 1px solid rgba(0, 166, 214, 0.12);
+}
+
+.whyCompareItem:nth-child(2) .whyCompareIcon {
+  color: #35c78a;
+  background: rgba(53, 199, 138, 0.09);
+  border-color: rgba(53, 199, 138, 0.14);
+}
+
+.whyCompareItem h3 {
+  margin: 1px 0 9px;
+  color: #13264b;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.whyCompareItem p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .whyCompareContainer {
+    width: min(100% - 48px, 1420px);
+  }
+
+  .whyCompareGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .whyCompareItem {
+    padding: 24px 0;
+  }
+
+  .whyCompareItem:first-child {
+    padding-top: 0;
+  }
+
+  .whyCompareItem:last-child {
+    padding-bottom: 0;
+  }
+
+  .whyCompareItem + .whyCompareItem {
+    border-left: 0;
+    border-top: 1px solid #e8edf4;
+  }
+}
+
+@media (max-width: 640px) {
+  .whyCompare {
+    padding-bottom: 64px;
+  }
+
+  .whyCompareContainer {
+    width: calc(100% - 32px);
+    padding: 28px 24px;
+    border-radius: 22px;
+  }
+
+  .whyCompareHeader {
+    margin-bottom: 28px;
+  }
+
+  .whyCompareItem {
+    gap: 14px;
+  }
+}

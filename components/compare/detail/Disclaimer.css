@@ -1,0 +1,57 @@
+.disclaimerSection {
+  padding: 48px 24px;
+  background: #ffffff;
+}
+
+.disclaimerContainer {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.disclaimerCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px 28px;
+  border: 1px solid #e8edf4;
+  border-radius: 20px;
+  background: #f8fcfe;
+}
+
+.disclaimerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: #00a6d6;
+  background: rgba(0, 166, 214, 0.1);
+}
+
+.disclaimerContent span {
+  display: block;
+  margin-bottom: 8px;
+  color: #13264b;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.disclaimerContent p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .disclaimerSection {
+    padding: 36px 16px;
+  }
+
+  .disclaimerCard {
+    padding: 20px;
+  }
+}

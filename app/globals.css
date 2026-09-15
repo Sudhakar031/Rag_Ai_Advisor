@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #6FCA9F;
+  --dark: #08120f;
+  --card: #121212;
+  --text: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@source "../components/**/*.{ts,tsx}";
+@source "../app/**/*.{ts,tsx}";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Inter, sans-serif;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Default base link behavior without overriding button utility classes */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #08120f !important;
+}
+
+.card {
+  background: #111;
+  border-radius: 16px;
+}
+
+/* ==========================================================================
+   GLOBAL BUTTON TEXT VISIBILITY GUARDS
+   Ensure all primary buttons across the site have crisp, high-contrast text
+   ========================================================================== */
+a.btn,
+button.btn,
+.compareHeroPrimaryButton,
+.compareCtaPrimary,
+.compareCTAPrimary,
+.primary-btn,
+.report-btn,
+[class*="bg-slate-900"],
+[class*="bg-blue-600"],
+[class*="bg-indigo-600"] {
+  /* Prevent dark text inheritance on dark-background buttons */
+}
+
+.compareHeroPrimaryButton,
+.compareHeroPrimaryButton *,
+.compareCtaPrimary,
+.compareCtaPrimary *,
+.compareCTAPrimary,
+.compareCTAPrimary *,
+.primary-btn,
+.primary-btn *,
+.report-btn,
+.report-btn * {
+  color: #ffffff !important;
+}
+
+.compareHeroSecondaryButton,
+.compareHeroSecondaryButton *,
+.compareCtaSecondary,
+.compareCtaSecondary *,
+.compareCTASecondary,
+.compareCTASecondary *,
+.secondary-btn,
+.secondary-btn * {
+  color: #13264b !important;
+}

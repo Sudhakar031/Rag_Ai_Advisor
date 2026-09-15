@@ -1,0 +1,79 @@
+/* Methodology Page */
+
+.methodology-page {
+    background: #ffffff;
+}
+
+/* Every section */
+
+.research-section,
+.evaluation-section,
+.criteria-section,
+.pricing-methodology,
+.fairness-section,
+.report-section,
+.methodology-cta {
+    padding: 72px 0;
+}
+
+/* Remove huge gaps */
+
+.research-section+.evaluation-section,
+.evaluation-section+.criteria-section,
+.criteria-section+.pricing-methodology,
+.pricing-methodology+.fairness-section,
+.fairness-section+.report-section,
+.report-section+.methodology-cta {
+    margin-top: -8px;
+}
+
+/* Shared heading */
+
+.section-header,
+.criteria-header,
+.pricing-header,
+.fairness-header {
+    max-width: 760px;
+    margin: 0 auto 42px;
+}
+
+.section-header h2,
+.criteria-header h2,
+.pricing-header h2,
+.fairness-header h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 12px 0 16px;
+}
+
+.section-header p,
+.criteria-header p,
+.pricing-header p,
+.fairness-header p {
+    font-size: 18px;
+    color: #64748b;
+    line-height: 1.8;
+}
+
+@media (max-width:768px){
+
+.research-section,
+.evaluation-section,
+.criteria-section,
+.pricing-methodology,
+.fairness-section,
+.report-section,
+.methodology-cta{
+    padding:56px 0;
+}
+
+.section-header h2,
+.criteria-header h2,
+.pricing-header h2,
+.fairness-header h2{
+    font-size:32px;
+}
+
+}

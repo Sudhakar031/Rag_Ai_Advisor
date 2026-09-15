@@ -1,0 +1,172 @@
+.strengthsTradeoffs {
+  padding: 96px 24px;
+  background: #ffffff;
+}
+
+.strengthsTradeoffsContainer {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.strengthsTradeoffsHeader {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.strengthsTradeoffsEyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.strengthsTradeoffsHeader h2 {
+  margin: 0;
+  color: #13264b;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.strengthsTradeoffsHeader p {
+  max-width: 650px;
+  margin: 18px 0 0;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.strengthsTradeoffsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.strengthsCard,
+.tradeoffsCard {
+  padding: 32px;
+  border: 1px solid #e8edf4;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 12px 40px rgba(19, 38, 75, 0.06);
+}
+
+.strengthsCard {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(53, 199, 138, 0.08),
+      rgba(255, 255, 255, 0.95)
+    );
+  border-color: rgba(53, 199, 138, 0.22);
+}
+
+.tradeoffsCard {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 166, 214, 0.06),
+      rgba(255, 255, 255, 0.95)
+    );
+  border-color: rgba(0, 166, 214, 0.18);
+}
+
+.strengthsCardHeader,
+.tradeoffsCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.strengthsCardHeader {
+  color: #159669;
+}
+
+.tradeoffsCardHeader {
+  color: #00a6d6;
+}
+
+.strengthsCardHeader h3,
+.tradeoffsCardHeader h3 {
+  margin: 0;
+  color: #13264b;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.strengthsCard ul,
+.tradeoffsCard ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.strengthsCard li,
+.tradeoffsCard li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.strengthsCard li svg,
+.tradeoffsCard li svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.strengthsCard li svg {
+  color: #35c78a;
+}
+
+.tradeoffsCard li svg {
+  color: #00a6d6;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .strengthsTradeoffs {
+    padding: 72px 20px;
+  }
+
+  .strengthsTradeoffsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .strengthsCard,
+  .tradeoffsCard {
+    padding: 26px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .strengthsTradeoffs {
+    padding: 56px 16px;
+  }
+
+  .strengthsTradeoffsHeader {
+    margin-bottom: 32px;
+  }
+
+  .strengthsTradeoffsHeader h2 {
+    font-size: 32px;
+  }
+
+  .strengthsCard,
+  .tradeoffsCard {
+    padding: 22px;
+    border-radius: 20px;
+  }
+}

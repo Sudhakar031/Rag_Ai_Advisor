@@ -1,0 +1,134 @@
+.report-section{
+    padding:70px 0;
+    background:#ffffff;
+}
+
+.report-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:40px;
+
+    border-radius:24px;
+
+    border:1px solid #E8EDF4;
+
+    background:#F8FCFE;
+
+}
+
+.report-left{
+
+    max-width:700px;
+
+}
+
+.report-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:18px;
+
+}
+
+.report-title svg{
+
+    color:#00A6D6;
+
+}
+
+.report-title h2{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    color:#13264B;
+
+}
+
+.report-left p{
+
+    color:#64748B;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+.report-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:16px 26px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        135deg,
+        #00A6D6,
+        #35C78A
+    );
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.report-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 35px rgba(0,166,214,.18);
+
+}
+
+@media(max-width:900px){
+
+.report-card{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.report-title h2{
+
+font-size:34px;
+
+}
+
+.report-btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+}

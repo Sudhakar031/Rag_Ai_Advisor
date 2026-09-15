@@ -1,0 +1,127 @@
+.fairness-section{
+    padding:70px 0;
+    background:#fff;
+}
+
+.fairness-header{
+    max-width:760px;
+    margin:0 0 50px;
+    text-align:left;
+}
+
+.fairness-title{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:14px;
+}
+
+.fairness-title svg{
+    color:#00A6D6;
+}
+
+.fairness-title h2{
+    font-size:44px;
+    font-weight:800;
+    color:#13264B;
+}
+
+.fairness-header p{
+    color:#64748B;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.fairness-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.fairness-card{
+
+    display:flex;
+
+    gap:20px;
+
+    padding:30px;
+
+    border:1px solid #E8EDF4;
+
+    border-radius:24px;
+
+    background:#fff;
+
+    transition:.3s;
+
+    box-shadow:0 12px 30px rgba(15,23,42,.05);
+
+}
+
+.fairness-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#35C78A;
+
+    box-shadow:0 18px 40px rgba(0,166,214,.10);
+
+}
+
+.fairness-icon{
+
+    width:56px;
+
+    height:56px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #00A6D6,
+        #35C78A
+    );
+
+    color:#fff;
+
+}
+
+.fairness-card h3{
+
+    font-size:22px;
+
+    color:#13264B;
+
+    margin-bottom:10px;
+
+}
+
+.fairness-card p{
+
+    color:#64748B;
+
+    line-height:1.8;
+
+    font-size:16px;
+
+}
+
+@media(max-width:900px){
+
+.fairness-grid{
+    grid-template-columns:1fr;
+}
+
+.fairness-title h2{
+    font-size:34px;
+}
+
+}

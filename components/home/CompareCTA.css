@@ -1,0 +1,364 @@
+.compareCta {
+  width: 100%;
+  padding: 60px 0 110px;
+  background: #ffffff;
+  font-family: var(--font-manrope), "Manrope", Arial, sans-serif;
+}
+
+.compareCtaContainer {
+  position: relative;
+  width: min(1220px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 78px 48px;
+  overflow: hidden;
+
+  border: 1px solid #d9eaf1;
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(0, 166, 214, 0.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 15% 90%,
+      rgba(53, 199, 138, 0.08),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fcfe 0%,
+      #edfaff 50%,
+      #f2fff9 100%
+    );
+
+  box-shadow:
+    0 24px 60px rgba(19, 38, 75, 0.07),
+    0 4px 14px rgba(19, 38, 75, 0.03);
+}
+
+.compareCtaContent {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* BADGE */
+
+.compareCtaBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 28px;
+  padding: 10px 20px;
+
+  color: #00a6d6;
+  background: rgba(0, 166, 214, 0.05);
+
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* TITLE */
+
+.compareCtaTitle {
+  max-width: 850px;
+  margin: 0 auto;
+
+  color: #13264b;
+
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2.5px;
+}
+
+.compareCtaTitle span {
+  display: block;
+
+  background: linear-gradient(
+    90deg,
+    #00a6d6 0%,
+    #16b5b0 50%,
+    #35c78a 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* DESCRIPTION */
+
+.compareCtaDescription {
+  max-width: 700px;
+  margin: 26px auto 0;
+
+  color: #64748b;
+
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* FEATURES */
+
+.compareCtaFeatures {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.compareCtaFeature {
+  min-height: 46px;
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  color: #13264b;
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid #dce8ef;
+  border-radius: 999px;
+
+  box-shadow: 0 5px 16px rgba(19, 38, 75, 0.025);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.compareCtaFeature svg {
+  flex-shrink: 0;
+  color: #35c78a;
+}
+
+.compareCtaFeature:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 166, 214, 0.3);
+
+  box-shadow: 0 10px 24px rgba(19, 38, 75, 0.06);
+}
+
+/* BUTTONS */
+
+.compareCtaActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.compareCtaPrimary,
+.compareCtaSecondary {
+  min-height: 56px;
+  padding: 0 28px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 750;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.compareCtaPrimary {
+  color: #ffffff;
+
+  background: linear-gradient(
+    135deg,
+    #00a6d6 0%,
+    #35c78a 100%
+  );
+
+  box-shadow: 0 12px 28px rgba(0, 166, 214, 0.18);
+}
+
+.compareCtaPrimary:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 18px 36px rgba(0, 166, 214, 0.25);
+}
+
+.compareCtaSecondary {
+  color: #13264b;
+  background: #ffffff;
+
+  border: 1px solid #d8e2eb;
+}
+
+.compareCtaSecondary:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(0, 166, 214, 0.35);
+
+  box-shadow: 0 12px 28px rgba(19, 38, 75, 0.07);
+}
+
+/* TRUST */
+
+.compareCtaTrust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.compareCtaStars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.compareCtaStars span {
+  color: #eab308;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.compareCtaTrust p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+.compareHeroImageFrame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.compareHeroImageFrame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+}
+
+.compareHeroImageFrame:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 30px 70px rgba(19, 38, 75, 0.18),
+    0 15px 35px rgba(0, 166, 214, 0.12);
+}
+
+.compareHeroImageFrame:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.03);
+}
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .compareCtaContainer {
+    width: calc(100% - 48px);
+    padding: 68px 36px;
+  }
+
+  .compareCtaTitle {
+    letter-spacing: -2px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .compareCta {
+    padding: 40px 0 80px;
+  }
+
+  .compareCtaContainer {
+    width: calc(100% - 32px);
+    padding: 54px 22px;
+    border-radius: 24px;
+  }
+
+  .compareCtaBadge {
+    margin-bottom: 22px;
+    font-size: 11px;
+  }
+
+  .compareCtaTitle {
+    font-size: clamp(36px, 11vw, 48px);
+    letter-spacing: -1.5px;
+  }
+
+  .compareCtaDescription {
+    margin-top: 22px;
+    font-size: 16px;
+  }
+
+  .compareCtaFeatures {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 32px;
+  }
+
+  .compareCtaFeature {
+    width: 100%;
+  }
+
+  .compareCtaActions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 34px;
+  }
+
+  .compareCtaPrimary,
+  .compareCtaSecondary {
+    width: 100%;
+  }
+
+  .compareCtaTrust {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

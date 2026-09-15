@@ -1,0 +1,139 @@
+.faqSection {
+  padding: 96px 24px;
+  background: #ffffff;
+}
+
+.faqContainer {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faqHeader {
+  max-width: 700px;
+  margin-bottom: 48px;
+}
+
+.faqEyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #00a6d6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.faqHeader h2 {
+  margin: 0;
+  color: #13264b;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.faqHeader p {
+  margin: 18px 0 0;
+  color: #64748b;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faqItem {
+  overflow: hidden;
+  border: 1px solid #e8edf4;
+  border-radius: 18px;
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.faqItem:hover,
+.faqItemOpen {
+  border-color: rgba(0, 166, 214, 0.3);
+  box-shadow: 0 12px 32px rgba(19, 38, 75, 0.06);
+}
+
+.faqQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 22px 24px;
+  border: 0;
+  background: transparent;
+  color: #13264b;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faqQuestion:hover {
+  color: #00a6d6;
+}
+
+.faqChevron {
+  flex-shrink: 0;
+  color: #00a6d6;
+  transition: transform 0.25s ease;
+}
+
+.faqItemOpen .faqChevron {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  padding: 0 24px 22px;
+}
+
+.faqAnswer p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .faqSection {
+    padding: 72px 20px;
+  }
+
+  .faqHeader {
+    margin-bottom: 36px;
+  }
+
+  .faqQuestion {
+    padding: 20px;
+  }
+
+  .faqAnswer {
+    padding: 0 20px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faqSection {
+    padding: 56px 16px;
+  }
+
+  .faqHeader h2 {
+    font-size: 32px;
+  }
+
+  .faqQuestion {
+    gap: 16px;
+    font-size: 15px;
+  }
+}
