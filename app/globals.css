@@ -109,3 +109,30 @@ button.btn,
 .secondary-btn * {
   color: #13264b !important;
 }
+
+/* Floating AI Mascot Animations */
+@keyframes mascotFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes mascotPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.35), 0 0 0 2px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.65), 0 0 0 3px rgba(16, 185, 129, 0.8);
+  }
+}
+
+.animate-mascot-float {
+  animation: mascotFloat 3.2s ease-in-out infinite;
+}
+
+.animate-mascot-pulse {
+  animation: mascotPulseGlow 2.4s ease-in-out infinite;
+}

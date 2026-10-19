@@ -1,0 +1,169 @@
+/* Custom Editorial & Markdown Styles - Unique Green and White Mix Theme */
+
+/* Scrollbar refinement */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #a7f3d0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #059669;
+}
+
+/* Markdown prose rendering inside advisor messages */
+.prose-advisor {
+  color: #1e293b;
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
+.prose-advisor h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+  margin-top: 1.25rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid #d1fae5;
+  padding-bottom: 0.4rem;
+}
+
+.prose-advisor h2:first-child {
+  margin-top: 0;
+}
+
+.prose-advisor h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #064e3b;
+  margin-top: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-advisor p {
+  margin-bottom: 0.75rem;
+}
+
+.prose-advisor p:last-child {
+  margin-bottom: 0;
+}
+
+.prose-advisor ul,
+.prose-advisor ol {
+  margin-top: 0.4rem;
+  margin-bottom: 0.85rem;
+  padding-left: 1.25rem;
+}
+
+.prose-advisor ul {
+  list-style-type: disc;
+}
+
+.prose-advisor ol {
+  list-style-type: decimal;
+}
+
+.prose-advisor li {
+  margin-bottom: 0.35rem;
+  padding-left: 0.2rem;
+}
+
+.prose-advisor strong {
+  font-weight: 600;
+  color: #064e3b;
+}
+
+.prose-advisor blockquote {
+  border-left: 3px solid #059669;
+  background-color: #ecfdf5;
+  padding: 0.6rem 1rem;
+  margin: 0.85rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: #064e3b;
+}
+
+/* Markdown Tables with Emerald & White Mix Styling */
+.prose-advisor table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #a7f3d0;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  font-size: 0.84rem;
+  background-color: #ffffff;
+}
+
+.prose-advisor th {
+  background: linear-gradient(to right, #064e3b, #134e4a, #064e3b);
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid #047857;
+}
+
+.prose-advisor td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  vertical-align: top;
+}
+
+.prose-advisor tr:last-child td {
+  border-bottom: none;
+}
+
+.prose-advisor tr:nth-child(even) td {
+  background-color: #f0fdf4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Floating AI Mascot Animations */
+@keyframes mascotFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes mascotPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.35), 0 0 0 2px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.65), 0 0 0 3px rgba(16, 185, 129, 0.8);
+  }
+}
+
+.animate-mascot-float {
+  animation: mascotFloat 3.2s ease-in-out infinite;
+}
+
+.animate-mascot-pulse {
+  animation: mascotPulseGlow 2.4s ease-in-out infinite;
+}

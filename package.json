@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "next build",
     "start": "next start",
-    "ingest": "node --experimental-strip-types scripts/ingest.ts",
     "lint": "eslint"
   },
   "dependencies": {

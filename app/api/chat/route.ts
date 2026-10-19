@@ -1,42 +1,38 @@
 import { NextRequest, NextResponse } from "next/server";
-import { askAdvisorRAG, ChatMessage } from "@/lib/rag";
-import type { ConversationContext } from "@/lib/contextManager";
+import { askAdvisorRAG } from "@/lib/rag";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { message, history, context } = body as {
-      message?: string;
-      history?: ChatMessage[];
-      context?: ConversationContext;
-    };
+    const { query, history = [], userName } = body;
 
-    if (!message || typeof message !== "string" || message.trim().length === 0) {
-      return NextResponse.json(
-        { error: "Message is required and must be a non-empty string." },
-        { status: 400 }
-      );
+    if (!query || typeof query !== "string" || !query.trim()) {
+      return NextResponse.json({
+        answer: "Please ask a question about Hireko.ai, competitor comparisons, pricing, or AI interview features!",
+        intent: "GENERAL_QA",
+        sources: [],
+        suggestedFollowUps: [
+          "Which platforms support live video?",
+          "Compare all platforms on pricing and AI features",
+          "Does HireVue have video interviews?",
+        ],
+      });
     }
 
-    const result = await askAdvisorRAG(message.trim(), history || [], context);
-
-    return NextResponse.json({
-      success: true,
-      answer: result.answer,
-      intent: result.intent,
-      sources: result.sources,
-      productCard: result.productCard,
-      suggestedFollowUps: result.suggestedFollowUps,
-      context: result.context,
-    });
+    const response = await askAdvisorRAG(query.trim(), history, undefined, userName);
+    return NextResponse.json(response);
   } catch (error) {
-    console.error("API /api/chat Error:", error);
-    return NextResponse.json(
-      {
-        error: "Looks like I hit a temporary issue while researching that. Try again in a moment.",
-        details: error instanceof Error ? error.message : String(error),
-      },
-      { status: 500 }
-    );
+    console.error("API /api/chat handled fallback:", error);
+    return NextResponse.json({
+      answer:
+        "Hireko.ai provides live conversational AI video and voice interviews with automated ~2-minute autograding. Some details for this specific request are not confirmed. What platform or feature would you like to check?",
+      intent: "GENERAL_QA",
+      sources: [],
+      suggestedFollowUps: [
+        "Which platforms support live video?",
+        "Compare all platforms on pricing and AI features",
+        "Does HireVue have video interviews?",
+      ],
+    });
   }
 }

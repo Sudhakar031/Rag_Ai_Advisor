@@ -92,10 +92,8 @@ export function resolveContextForQuery(context: ConversationContext, query: stri
   let targetProducts = context.currentProducts && context.currentProducts.length > 0 ? context.currentProducts : ["Hireko"];
 
   if (/what about|how about|which is better|which one|why/i.test(qLower) && targetProducts.length >= 2) {
-    const prodA = targetProducts[0];
-    const prodB = targetProducts[1];
     return {
-      resolvedQuery: `Compare ${prodA} vs ${prodB} regarding ${query}`,
+      resolvedQuery: `Compare ${targetProducts.join(" vs ")} regarding ${query}`,
       targetProducts,
     };
   }
