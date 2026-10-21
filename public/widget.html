@@ -438,7 +438,7 @@
             key_features: "Dedicated live interview rooms, asynchronous video, automated proctoring, collaborative code editor",
             ai_capabilities: "Behavioral insights, speech analysis, and automated proctoring flags",
             best_for: "Campus recruitment, universities, and high-stakes proctored testing",
-            pricing: "Annual custom enterprise contracts based on user and interview volume",
+            pricing: "Quote-based enterprise model (no public pricing; corporate credentials & sales consultation required via talview.com/contact; typical annual contracts start ~$15,000–$25,000/year)",
             limitations: "Interface and workflows feel dated compared to modern conversational AI platforms",
             takeaway: "Talview is strong for proctored campus testing; Hireko provides superior conversational candidate experience and fast automated scoring."
         },
@@ -498,7 +498,7 @@
             key_features: "SMS/WhatsApp candidate screening, automated interview scheduling, onboarding chat",
             ai_capabilities: "Conversational text/chat AI assistant automating repetitive candidate logistics",
             best_for: "High-volume frontline, retail, and restaurant hourly hiring",
-            pricing: "Custom enterprise contracts based on hiring volume",
+            pricing: "Quote-based high-volume contract (no public pricing; business credentials & demo required via paradox.ai; typically ~$12,000/year entry, $30,000–$80,000 mid-market, $100,000–$250,000+ enterprise)",
             limitations: "Not an interview room host; relies on Zoom/Teams for actual video meetings",
             takeaway: "Paradox automates SMS chat logistics, whereas Hireko conducts the actual interactive conversational interviews and evaluations."
         },
@@ -508,7 +508,7 @@
             key_features: "Automated chat screening, calendar scheduling, interview transcription, and notes",
             ai_capabilities: "Conversational chat screening and post-interview summarization",
             best_for: "High-volume hiring teams looking to automate screening chats and scheduling",
-            pricing: "Custom annual pricing tailored to company hiring volume",
+            pricing: "Quote-based subscription & usage model (no public pricing; corporate credentials & sales demo required via humanly.io; mid-market from ~$200–$500/month up to custom annual enterprise contracts)",
             limitations: "Does not host proprietary interactive video interviews; relies on third-party video tools",
             takeaway: "Humanly handles chat screening and note-taking; Hireko conducts the full interactive conversational video interview and automated scoring."
         },
@@ -568,9 +568,52 @@
             key_features: "Live & on-demand video interviewing, Virtual Job Tryout (VJT), automated scheduling",
             ai_capabilities: "Automated Interview Scoring (AIS) analyzing transcribed video responses",
             best_for: "Fortune 500 enterprises with traditional I/O psychometric assessment needs",
-            pricing: "Enterprise annual contracts (acquired by HireVue in May 2023)",
+            pricing: "Quote-based enterprise model via HireVue (no public pricing; corporate credentials & intake discovery required via hirevue.com; typically starts ~$35,000/year, enterprise $50,000–$145,000+/year plus setup fees)",
             limitations: "High enterprise cost, lengthy setup, now absorbed into HireVue's portfolio",
             takeaway: "Modern Hire is tailored for legacy enterprise compliance; Hireko offers modern, agile two-way conversational AI interviewing."
+        }
+    };
+
+    const GATED_PRICING_PLATFORMS = {
+        "Talview": {
+            name: "Talview",
+            slug: "talview",
+            model: "Unit-based / consumption-based pricing scaled by candidate test volume plus modules (Alvy AI proctoring, Ivy AI interviewer, secure browser lockdown)",
+            credentials_detail: "Talview does not publish pricing tables online. Access to official pricing, sandbox environments, and platform credentials requires submitting verified corporate credentials (business domain email, organization size, expected testing volume) at talview.com/contact for qualification by a solutions expert.",
+            estimated_range: "Industry procurement reports indicate annual enterprise commitments typically start around **$15,000 to $25,000/year**, scaling upward based on exam volume and proctoring minutes (often structured around minimum packages of 150–200+ units).",
+            trial_detail: "No self-serve free trial; trial credentials and sandbox environments are created directly by Talview solution architects following a discovery consultation.",
+            short_summary: "Industry procurement reports indicate annual commitments typically start around $15,000 to $25,000 based on test volume and proctoring modules.",
+            takeaway: "Talview requires organizational credentials and sales engagement to access pricing; choose Hireko.ai for transparent SaaS tiers, rapid onboarding, and autonomous conversational AI interviews."
+        },
+        "Modern Hire": {
+            name: "Modern Hire (HireVue)",
+            slug: "modern-hire",
+            model: "Enterprise annual subscription tiered by employee headcount, annual hiring volume, and modules (Virtual Job Tryout assessments, Automated Interview Scoring)",
+            credentials_detail: "Modern Hire was acquired by HireVue in May 2023. To view pricing or obtain platform credentials, prospective enterprise buyers must submit corporate credentials on hirevue.com, complete an ROI calculation intake, and schedule a consultation with HireVue sales.",
+            estimated_range: "Baseline packages typically start around **$35,000/year**, with full enterprise implementations commonly ranging between **$50,000 and $145,000+/year**, plus **$5,000 to $40,000** in one-time ATS integration and setup fees.",
+            trial_detail: "No self-serve free trial; custom proof-of-concept sandboxes require formal enterprise qualification.",
+            short_summary: "Contracts typically start around $35,000/year for essentials and range from $50,000 to $145,000+ annually depending on hiring scale.",
+            takeaway: "Modern Hire operates under HireVue's high-ticket enterprise contracts; Hireko.ai provides agile, cost-effective conversational AI interviewing without complex sales cycles."
+        },
+        "Paradox": {
+            name: "Paradox (Olivia)",
+            slug: "paradox",
+            model: "High-volume conversational usage contract scaled by candidate conversation volume, active hiring locations, and selected modules (conversational scheduling, SMS screening, events)",
+            credentials_detail: "Paradox does not offer public pricing tables or self-serve tiers. Organizations must provide verified corporate credentials (business email, candidate message volume, ATS environment like Workday/SAP) to request a demo at paradox.ai and receive an official quote.",
+            estimated_range: "Baseline contracts typically start around **$12,000/year** ($1,000/month), mid-market contracts run **$30,000–$80,000/year**, and large enterprise/frontline deployments range from **$100,000 to $250,000+ per year** (up to $500k for global retail brands), with implementation fees ranging from **$25,000 to $75,000**.",
+            trial_detail: "No self-serve free trial; demo access and staging environments are provisioned during enterprise sales discovery.",
+            short_summary: "Contracts generally start around $12,000/year for baseline setups and scale to $100,000–$250,000+ for enterprise high-volume deployments.",
+            takeaway: "Paradox requires corporate credentials and substantial enterprise commitments for SMS coordination; Hireko delivers direct, accessible two-way conversational AI video interviewing."
+        },
+        "Humanly": {
+            name: "Humanly",
+            slug: "humanly",
+            model: "Seat-based and candidate usage subscriptions, tiered packages, or outcome-based models (pay-per-candidate or pay-per-hire) with ATS integrations",
+            credentials_detail: "Humanly gates its pricing behind corporate discovery. Companies must register verified business credentials (corporate domain email, active job openings, candidate volume) at humanly.io to schedule a discovery demo and receive custom pricing.",
+            estimated_range: "Mid-market packages generally start around **$200 to $500/month**, while high-volume frontline and enterprise agreements are custom-quoted annually based on hiring scale.",
+            trial_detail: "No self-serve free trial; targeted pilot access or proof-of-concept testing is negotiated directly with their sales team.",
+            short_summary: "Pricing typically starts at $200–$500/month for mid-market teams, scaling up to custom annual contracts for enterprise frontline hiring.",
+            takeaway: "Humanly requires corporate discovery credentials for its chat screening; Hireko provides accessible, transparent conversational AI video and voice evaluations."
         }
     };
 
@@ -648,6 +691,13 @@
 
         // 2. SMALL KEYWORDS & SHORT SENTENCES RULE: reply in two lines of sentence
         if (words.length <= 4 && !/(vs|compare|difference|better than|which is better)/i.test(qLower)) {
+            if (compName && GATED_PRICING_PLATFORMS[compName] && /(price|pricing|cost|how much)/i.test(qLower)) {
+                const info = GATED_PRICING_PLATFORMS[compName];
+                return {
+                    answer: `${info.name} does not publish public pricing; organizations must submit corporate credentials to book a demo and receive a custom quote.\n${info.short_summary}`,
+                    sources: [`https://hireko.ai/compare/${info.slug}-vs-hireko`]
+                };
+            }
             if (compName && COMPETITOR_PROFILES[compName]) {
                 const c = COMPETITOR_PROFILES[compName];
                 return {
@@ -743,7 +793,26 @@
             };
         }
 
-        // 6. SINGLE COMPETITOR QUESTION (Rule 4: structured bullets, no long paragraphs)
+        // 6. DEDICATED GATED PRICING HANDLER FOR TALVIEW, MODERN HIRE, PARADOX, HUMANLY
+        const isPricingQuery = /(pricing|price|cost|how much|rate|fee|subscription)/i.test(qLower);
+        if (compName && GATED_PRICING_PLATFORMS[compName] && isPricingQuery && !isComparison) {
+            const info = GATED_PRICING_PLATFORMS[compName];
+            const answer = [
+                `**${info.name}** does not publish public pricing tables on its website; access to pricing proposals, platform credentials, and sandbox environments requires submitting verified corporate credentials and completing an enterprise sales demo:\n`,
+                "* **Pricing Transparency:** 100% quote-based enterprise model; no public price sheet or self-serve tiers.",
+                `* **Credentials Requirement:** ${info.credentials_detail}`,
+                `* **Pricing Model:** ${info.model}.`,
+                `* **Estimated Cost Range:** ${info.estimated_range}`,
+                `* **Trial & Access:** ${info.trial_detail}`,
+                `\n**Takeaway:** ${info.takeaway}`
+            ].join("\n");
+            return {
+                answer: answer,
+                sources: [`https://hireko.ai/compare/${info.slug}-vs-hireko`]
+            };
+        }
+
+        // 7. SINGLE COMPETITOR QUESTION (Rule 4: structured bullets, no long paragraphs)
         if (compName && COMPETITOR_PROFILES[compName]) {
             const c = COMPETITOR_PROFILES[compName];
             const answer = [
@@ -762,7 +831,7 @@
             };
         }
 
-        // 7. GENERAL HIREKO PLATFORM SUMMARY
+        // 8. GENERAL HIREKO PLATFORM SUMMARY
         const hk = HIREKO_PROFILE;
         const generalAnswer = [
             "**Hireko.ai** is an autonomous two-way conversational AI interviewing platform for modern recruitment teams:\n",
