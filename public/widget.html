@@ -389,7 +389,7 @@
         <div class="chip" onclick="askPreset('Does Talview support dedicated live interview rooms?')">Talview Live Rooms</div>
     </div>
 
-    <form class="input-bar" id="chatForm" onsubmit="handleSend(event)">
+    <form class="input-bar" id="chatForm" onsubmit="if (event) event.preventDefault(); handleSend(event); return false;">
         <input type="text" id="userInput" placeholder="Ask a comparison question..." autocomplete="off" />
         <button type="submit" class="send-btn" id="sendBtn" title="Send query">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -1064,26 +1064,7 @@
             };
         }
 
-        // 6. DEDICATED GATED PRICING HANDLER FOR TALVIEW, MODERN HIRE, PARADOX, HUMANLY
-        const isPricingQuery = /(pricing|price|cost|how much|rate|fee|subscription)/i.test(qLower);
-        if (compName && GATED_PRICING_PLATFORMS[compName] && isPricingQuery && !isComparison) {
-            const info = GATED_PRICING_PLATFORMS[compName];
-            const answer = [
-                `**${info.name}** does not publish public pricing tables on its website; access to pricing proposals, platform credentials, and sandbox environments requires submitting verified corporate credentials and completing an enterprise sales demo:\n`,
-                "* **Pricing Transparency:** 100% quote-based enterprise model; no public price sheet or self-serve tiers.",
-                `* **Credentials Requirement:** ${info.credentials_detail}`,
-                `* **Pricing Model:** ${info.model}.`,
-                `* **Estimated Cost Range:** ${info.estimated_range}`,
-                `* **Trial & Access:** ${info.trial_detail}`,
-                `\n**Takeaway:** ${info.takeaway}`
-            ].join("\n");
-            return {
-                answer: answer,
-                sources: [`https://hireko.ai/compare/${info.slug}-vs-hireko`]
-            };
-        }
-
-        // 7. SINGLE COMPETITOR QUESTION (Rule 4: structured bullets, no long paragraphs)
+        // 6. SINGLE COMPETITOR QUESTION (Rule 4: structured bullets, no long paragraphs)
         if (compName && COMPETITOR_PROFILES[compName]) {
             const c = COMPETITOR_PROFILES[compName];
             const answer = [
@@ -1102,7 +1083,7 @@
             };
         }
 
-        // 8. GENERAL HIREKO PLATFORM SUMMARY
+        // 7. GENERAL HIREKO PLATFORM SUMMARY
         const hk = HIREKO_PROFILE;
         const generalAnswer = [
             "**Hireko.ai** is an autonomous two-way conversational AI interviewing platform for modern recruitment teams:\n",
@@ -1324,6 +1305,34 @@
                     Hi there! I'm your Hireko.ai Product Advisor. Ask me anything about Hireko.ai or how it compares to other tools.
                 </div>
             </div>`;
+    }
+
+    // Attach explicit event listeners to prevent any possibility of page refresh
+    const chatForm = document.getElementById("chatForm");
+    if (chatForm) {
+        chatForm.addEventListener("submit", function(e) {
+            if (e) e.preventDefault();
+            handleSend(e);
+            return false;
+        });
+    }
+
+    if (userInput) {
+        userInput.addEventListener("keydown", function(e) {
+            if (e.key === "Enter" && !e.shiftKey) {
+                if (e) e.preventDefault();
+                handleSend(e);
+                return false;
+            }
+        });
+    }
+
+    if (sendBtn) {
+        sendBtn.addEventListener("click", function(e) {
+            if (e) e.preventDefault();
+            handleSend(e);
+            return false;
+        });
     }
 </script>
 
