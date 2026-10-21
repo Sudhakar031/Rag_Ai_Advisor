@@ -629,7 +629,7 @@ export function generateCasualResponse(intent: IntentType, userName?: string): s
     case "NAME_INTRO":
       return `Hi ${userName}, what brings you here today?`;
     case "CASUAL_GREETING":
-      return `${userName ? `Hey ${userName}!` : "Hey!"} Nice to have you here. What would you like to explore today?`;
+      return "Hi there! I'm the Hireko.ai Product Advisor. How can I assist you?";
     case "CASUAL_THANKS":
       return `You're very welcome ${nameShort}glad I could help! Want to compare another platform?`;
     case "CASUAL_CONFIRMATION":
