@@ -42,6 +42,18 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/web/widget",
+        destination: "/widget.html",
+      },
+      {
+        source: "/widget",
+        destination: "/widget.html",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

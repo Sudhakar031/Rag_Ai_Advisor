@@ -391,7 +391,7 @@
 
     <form class="input-bar" id="chatForm" onsubmit="if (event) event.preventDefault(); handleSend(event); return false;">
         <input type="text" id="userInput" placeholder="Ask a comparison question..." autocomplete="off" />
-        <button type="submit" class="send-btn" id="sendBtn" title="Send query">
+        <button type="button" class="send-btn" id="sendBtn" onclick="handleSend(event)" title="Send query">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         </button>
     </form>
@@ -1245,11 +1245,14 @@
 
         for (const ep of endpointsToTry) {
             try {
+                const signal = (typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function")
+                    ? AbortSignal.timeout(2000)
+                    : undefined;
                 const res = await fetch(ep, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: payload,
-                    signal: AbortSignal.timeout(2500)
+                    signal: signal
                 });
                 if (res.ok) {
                     const data = await res.json();
@@ -1267,13 +1270,14 @@
     }
 
     async function handleSend(e) {
-        if (e) e.preventDefault();
-        const query = userInput.value.trim();
-        if (!query) return;
+        if (e && typeof e.preventDefault === "function") e.preventDefault();
+        if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+        const query = (userInput ? userInput.value : "").trim();
+        if (!query) return false;
 
         appendMessage("user", query);
-        userInput.value = "";
-        sendBtn.disabled = true;
+        if (userInput) userInput.value = "";
+        if (sendBtn) sendBtn.disabled = true;
         appendTypingIndicator();
 
         try {
@@ -1286,13 +1290,14 @@
             const fallbackData = evaluateAdvisorClientSide(query);
             appendMessage("assistant", fallbackData.answer, fallbackData.sources || []);
         } finally {
-            sendBtn.disabled = false;
-            userInput.focus();
+            if (sendBtn) sendBtn.disabled = false;
+            if (userInput) userInput.focus();
         }
+        return false;
     }
 
     function askPreset(text) {
-        userInput.value = text;
+        if (userInput) userInput.value = text;
         handleSend();
     }
 
@@ -1310,6 +1315,11 @@
     // Attach explicit event listeners to prevent any possibility of page refresh
     const chatForm = document.getElementById("chatForm");
     if (chatForm) {
+        chatForm.onsubmit = function(e) {
+            if (e) e.preventDefault();
+            handleSend(e);
+            return false;
+        };
         chatForm.addEventListener("submit", function(e) {
             if (e) e.preventDefault();
             handleSend(e);
@@ -1328,6 +1338,11 @@
     }
 
     if (sendBtn) {
+        sendBtn.onclick = function(e) {
+            if (e) e.preventDefault();
+            handleSend(e);
+            return false;
+        };
         sendBtn.addEventListener("click", function(e) {
             if (e) e.preventDefault();
             handleSend(e);
