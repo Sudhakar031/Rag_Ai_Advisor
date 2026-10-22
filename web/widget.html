@@ -413,12 +413,17 @@
     // GROUNDED PRODUCT & COMPETITOR KNOWLEDGE
     // ==========================================
     const HIREKO_PROFILE = {
+        name: "Hireko.ai",
+        slug: "hireko",
         core_purpose: "Autonomous two-way conversational AI video interviewing and candidate intelligence",
         key_features: "Live interactive video/voice interviews, real-time adaptive questioning, automated rubrics & scorecards",
         ai_capabilities: "Autonomous conversational AI interviewer with speech/language reasoning and ~2-minute autograding",
         best_for: "Fast-growing teams, high-volume hiring, and AI-first recruitment across tech and non-tech roles",
         pricing: "Flexible, transparent SaaS tiers with accessible onboarding (contact for consultation)",
-        limitations: "Newer platform brand with growing third-party integrations catalog"
+        limitations: "Newer platform brand with growing third-party integrations catalog",
+        single_takeaway: "Hireko.ai delivers autonomous two-way conversational AI video interviewing with real-time autograding, providing fast, objective candidate evaluation.",
+        takeaway: "Hireko.ai delivers autonomous two-way conversational AI video interviewing with real-time autograding, providing fast, objective candidate evaluation.",
+        hireko_takeaway: "Hireko.ai delivers autonomous two-way conversational AI video interviewing with real-time autograding, providing fast, objective candidate evaluation."
     };
 
     const COMPETITOR_PROFILES = {
@@ -430,6 +435,8 @@
             best_for: "Large enterprise organizations requiring extensive legacy ATS compliance",
             pricing: "Custom enterprise annual contracts (typically starting ~$35,000+/year)",
             limitations: "High contract minimums, complex 4-12 week onboarding, and rigid legacy workflows",
+            single_takeaway: "HireVue is tailored for large enterprise organizations needing compliant asynchronous video interviewing and psychometric assessments.",
+            hireko_takeaway: "Hireko is best for agile teams seeking interactive, automated conversational AI interviews at accessible pricing, whereas HireVue caters to large enterprises with complex compliance requirements.",
             takeaway: "Hireko is best for agile teams seeking interactive, automated conversational AI interviews at accessible pricing, whereas HireVue caters to large enterprises with complex compliance requirements."
         },
         "Talview": {
@@ -440,6 +447,8 @@
             best_for: "Campus recruitment, universities, and high-stakes proctored testing",
             pricing: "Quote-based enterprise model (no public pricing; corporate credentials & sales consultation required via talview.com/contact; typical annual contracts start ~$15,000–$25,000/year)",
             limitations: "Interface and workflows feel dated compared to modern conversational AI platforms",
+            single_takeaway: "Talview is a specialized platform for proctored exam rooms and high-stakes campus recruitment.",
+            hireko_takeaway: "Talview is strong for proctored campus testing; Hireko provides superior conversational candidate experience and fast automated scoring.",
             takeaway: "Talview is strong for proctored campus testing; Hireko provides superior conversational candidate experience and fast automated scoring."
         },
         "Spark Hire": {
@@ -450,6 +459,8 @@
             best_for: "Staffing agencies and SMB/mid-market teams needing simple video screening",
             pricing: "Transparent subscription plans starting from ~$149/month",
             limitations: "Lacks autonomous conversational AI, adaptive follow-ups, and automated competency rubrics",
+            single_takeaway: "Spark Hire provides straightforward recorded and live video interviewing with transparent pricing starting at $149/month.",
+            hireko_takeaway: "Spark Hire provides basic video screening, but Hireko delivers intelligent, automated two-way AI interviews with real-time autograding.",
             takeaway: "Spark Hire provides basic video screening, but Hireko delivers intelligent, automated two-way AI interviews with real-time autograding."
         },
         "myInterview": {
@@ -460,6 +471,8 @@
             best_for: "Retail, hospitality, and customer-facing high-volume hiring",
             pricing: "Starter tier available; custom pricing for higher candidate volumes",
             limitations: "No two-way conversational AI, no technical coding sandbox, limited deep competency scoring",
+            single_takeaway: "myInterview focuses on mobile-friendly asynchronous video screening and candidate engagement for high-volume roles.",
+            hireko_takeaway: "myInterview excels at basic high-volume mobile screening, while Hireko provides advanced conversational AI evaluation across technical and business roles.",
             takeaway: "myInterview excels at basic high-volume mobile screening, while Hireko provides advanced conversational AI evaluation across technical and business roles."
         },
         "Willo": {
@@ -470,6 +483,8 @@
             best_for: "Early-stage screening, SMEs, and high-volume preliminary candidate filtering",
             pricing: "Transparent self-serve plans starting from ~$37.50/month to $399/month",
             limitations: "Does not support live synchronous video rooms or real-time conversational AI follow-ups",
+            single_takeaway: "Willo is ideal for simple, affordable one-way recorded video screening across all devices with self-serve onboarding.",
+            hireko_takeaway: "Willo is ideal for simple, affordable one-way video screening; choose Hireko if you need intelligent, two-way conversational AI evaluation.",
             takeaway: "Willo is ideal for simple, affordable one-way video screening; choose Hireko if you need intelligent, two-way conversational AI evaluation."
         },
         "CodeSignal": {
@@ -480,6 +495,8 @@
             best_for: "High-volume software engineering benchmarking and enterprise developer hiring",
             pricing: "Build plan from $79/mo; Grow tier $479/mo; custom enterprise contracts",
             limitations: "Strictly focused on engineering roles; expensive enterprise tiers; no conversational soft-skill screening",
+            single_takeaway: "CodeSignal leads the industry for dedicated IDE coding challenges and standardized technical developer assessments.",
+            hireko_takeaway: "CodeSignal leads for dedicated IDE coding challenges; Hireko provides unified conversational screening covering technical reasoning and soft skills.",
             takeaway: "CodeSignal leads for dedicated IDE coding challenges; Hireko provides unified conversational screening covering technical reasoning and soft skills."
         },
         "Coderbyte": {
@@ -490,6 +507,8 @@
             best_for: "Fast-moving tech startups and dev teams wanting affordable coding assessments",
             pricing: "Transparent pricing starting at $199/month for unlimited candidate assessments",
             limitations: "Limited evaluation for non-technical roles; no autonomous voice/video conversational AI",
+            single_takeaway: "Coderbyte offers an extensive library of 3,000+ coding challenges with unlimited assessments starting at $199/month.",
+            hireko_takeaway: "Coderbyte is great for developer test cases; Hireko offers comprehensive conversational AI screening for both technical and cross-functional teams.",
             takeaway: "Coderbyte is great for developer test cases; Hireko offers comprehensive conversational AI screening for both technical and cross-functional teams."
         },
         "Paradox": {
@@ -500,6 +519,8 @@
             best_for: "High-volume frontline, retail, and restaurant hourly hiring",
             pricing: "Quote-based high-volume contract (no public pricing; business credentials & demo required via paradox.ai; typically ~$12,000/year entry, $30,000–$80,000 mid-market, $100,000–$250,000+ enterprise)",
             limitations: "Not an interview room host; relies on Zoom/Teams for actual video meetings",
+            single_takeaway: "Paradox excels at high-volume frontline recruitment logistics, conversational SMS screening, and automated calendar scheduling.",
+            hireko_takeaway: "Paradox automates SMS chat logistics, whereas Hireko conducts the actual interactive conversational interviews and evaluations.",
             takeaway: "Paradox automates SMS chat logistics, whereas Hireko conducts the actual interactive conversational interviews and evaluations."
         },
         "Humanly": {
@@ -510,6 +531,8 @@
             best_for: "High-volume hiring teams looking to automate screening chats and scheduling",
             pricing: "Quote-based subscription & usage model (no public pricing; corporate credentials & sales demo required via humanly.io; mid-market from ~$200–$500/month up to custom annual enterprise contracts)",
             limitations: "Does not host proprietary interactive video interviews; relies on third-party video tools",
+            single_takeaway: "Humanly automates candidate chat screening, calendar scheduling, and post-interview note summarization.",
+            hireko_takeaway: "Humanly handles chat screening and note-taking; Hireko conducts the full interactive conversational video interview and automated scoring.",
             takeaway: "Humanly handles chat screening and note-taking; Hireko conducts the full interactive conversational video interview and automated scoring."
         },
         "Interviewer.AI": {
@@ -520,6 +543,8 @@
             best_for: "Pre-screening large candidate pools before live interview rounds",
             pricing: "Tiered subscriptions starting from ~$99/month",
             limitations: "Scoring can feel opaque; no synchronous live interview room or two-way conversational AI",
+            single_takeaway: "Interviewer.AI focuses on asynchronous video pre-screening and psychological trait scoring for candidate pools.",
+            hireko_takeaway: "Interviewer.AI scores recorded videos; Hireko provides transparent, rubric-aligned interactive two-way AI interviews.",
             takeaway: "Interviewer.AI scores recorded videos; Hireko provides transparent, rubric-aligned interactive two-way AI interviews."
         },
         "Metaview": {
@@ -530,6 +555,8 @@
             best_for: "Recruiters and hiring managers who want zero manual note-taking during live interviews",
             pricing: "Free tier available; Pro from $45/seat/month; Enterprise custom",
             limitations: "Does not conduct interviews or screen candidates; purely an intelligence layer",
+            single_takeaway: "Metaview is an AI note-taking intelligence overlay that automatically joins live interview calls to create structured summaries.",
+            hireko_takeaway: "Metaview is an intelligence overlay for human interviews; Hireko conducts autonomous AI screening interviews directly.",
             takeaway: "Metaview is an intelligence overlay for human interviews; Hireko conducts autonomous AI screening interviews directly."
         },
         "Mercor": {
@@ -540,6 +567,8 @@
             best_for: "Companies looking to hire pre-screened global tech talent quickly",
             pricing: "Markup / percentage fee on hired talent",
             limitations: "Marketplace model rather than a standalone hiring workflow tool for your own ATS pipeline",
+            single_takeaway: "Mercor is an AI talent marketplace that sources and pre-vets global software developers for contract and full-time hiring.",
+            hireko_takeaway: "Mercor is a talent marketplace; Hireko is an autonomous AI interviewing platform for your direct applicant pipeline.",
             takeaway: "Mercor is a talent marketplace; Hireko is an autonomous AI interviewing platform for your direct applicant pipeline."
         },
         "Greenhouse": {
@@ -550,6 +579,8 @@
             best_for: "Scaling companies and enterprises needing a robust, structured ATS backbone",
             pricing: "Quote-based annual subscriptions tiered by company headcount",
             limitations: "Not an interview platform; relies on integrations (like Hireko) for video interviewing",
+            single_takeaway: "Greenhouse is an enterprise Applicant Tracking System (ATS) providing structured hiring workflows and candidate pipeline management.",
+            hireko_takeaway: "Greenhouse is the ATS system of record; Hireko integrates into Greenhouse to automate the interview and evaluation stage.",
             takeaway: "Greenhouse is the ATS system of record; Hireko integrates into Greenhouse to automate the interview and evaluation stage."
         },
         "Recruit41": {
@@ -560,6 +591,8 @@
             best_for: "Recruitment agencies looking to automate candidate sourcing funnels",
             pricing: "Subscription-based SaaS plans",
             limitations: "Limited video capabilities; focuses primarily on sourcing and chat",
+            single_takeaway: "Recruit41 focuses on automated candidate sourcing, outbound reach-out, and initial screening questionnaires.",
+            hireko_takeaway: "Recruit41 focuses on candidate sourcing; Hireko automates the conversational video interview and competency evaluation.",
             takeaway: "Recruit41 focuses on candidate sourcing; Hireko automates the conversational video interview and competency evaluation."
         },
         "Modern Hire": {
@@ -570,9 +603,13 @@
             best_for: "Fortune 500 enterprises with traditional I/O psychometric assessment needs",
             pricing: "Quote-based enterprise model via HireVue (no public pricing; corporate credentials & intake discovery required via hirevue.com; typically starts ~$35,000/year, enterprise $50,000–$145,000+/year plus setup fees)",
             limitations: "High enterprise cost, lengthy setup, now absorbed into HireVue's portfolio",
+            single_takeaway: "Modern Hire provides enterprise virtual interviewing and Virtual Job Tryout psychometric assessments under HireVue's portfolio.",
+            hireko_takeaway: "Modern Hire is tailored for legacy enterprise compliance; Hireko offers modern, agile two-way conversational AI interviewing.",
             takeaway: "Modern Hire is tailored for legacy enterprise compliance; Hireko offers modern, agile two-way conversational AI interviewing."
         }
     };
+
+    const ALL_PLATFORM_PROFILES = { "Hireko.ai": HIREKO_PROFILE, ...COMPETITOR_PROFILES };
 
     const GATED_PRICING_PLATFORMS = {
         "Talview": {
@@ -617,15 +654,24 @@
         }
     };
 
-    const HIREKO_PRICING_DIMENSIONS = {
+    const HIREKO_PRICING_DATA = {
+        name: "Hireko.ai",
+        slug: "hireko",
         model: "Predictable SaaS subscription tiers",
         transparency: "100% transparent SaaS tiers",
         credentials: "**None** (instant consultation & public demo)",
         cost: "Flexible, accessible SaaS subscription tiers",
         trial: "Guided interactive demo & pilot evaluation",
         setup: "Rapid onboarding with zero complex setup overhead",
-        focus: "Autonomous two-way conversational AI video interviews with real-time autograding"
+        focus: "Autonomous two-way conversational AI video interviews with real-time autograding",
+        gated: false,
+        summary: "predictable, flexible SaaS subscription tiers with transparent pricing and public demo",
+        single_takeaway: "Hireko.ai provides transparent SaaS tiers, rapid onboarding, and autonomous conversational AI interviews at accessible rates.",
+        hireko_takeaway: "Hireko.ai provides transparent SaaS tiers, rapid onboarding, and autonomous conversational AI interviews at accessible rates.",
+        takeaway: "Hireko.ai provides transparent SaaS tiers, rapid onboarding, and autonomous conversational AI interviews at accessible rates."
     };
+
+    const HIREKO_PRICING_DIMENSIONS = HIREKO_PRICING_DATA;
 
     const COMPETITOR_PRICING_DATA = {
         "Talview": {
@@ -640,6 +686,9 @@
             focus: "Proctored exam rooms & campus recruitment",
             gated: true,
             credentials_note: "Talview requires verified corporate domain credentials (business email, organization size, test volume) via talview.com/contact. Pricing is customized based on candidate volume and modular add-ons (Alvy AI proctoring, Ivy interviewer, secure lockdown browser).",
+            summary: "consumption-based contracts starting ~$15,000–$25,000/year requiring corporate credentials",
+            single_takeaway: "Talview requires organizational credentials and sales engagement to access pricing, specializing in proctored exam rooms and campus recruitment.",
+            hireko_takeaway: "Talview requires organizational credentials and sales engagement to access pricing; choose Hireko.ai for transparent SaaS tiers, rapid onboarding, and autonomous conversational AI interviews.",
             takeaway: "Talview requires organizational credentials and sales engagement to access pricing; choose Hireko.ai for transparent SaaS tiers, rapid onboarding, and autonomous conversational AI interviews."
         },
         "Modern Hire": {
@@ -654,6 +703,9 @@
             focus: "Virtual Job Tryout (VJT) psychometrics & legacy video interviewing",
             gated: true,
             credentials_note: "Modern Hire was acquired by HireVue in May 2023. Obtaining pricing and credentials requires submitting verified business details on hirevue.com, completing an ROI intake, and meeting with HireVue enterprise sales.",
+            summary: "enterprise annual contracts starting ~$35,000/year via HireVue requiring corporate credentials",
+            single_takeaway: "Modern Hire operates under HireVue's high-ticket enterprise contracts and requires corporate credentials for access.",
+            hireko_takeaway: "Modern Hire operates under HireVue's high-ticket enterprise contracts; Hireko.ai provides agile, cost-effective conversational AI interviewing without complex sales cycles.",
             takeaway: "Modern Hire operates under HireVue's high-ticket enterprise contracts; Hireko.ai provides agile, cost-effective conversational AI interviewing without complex sales cycles."
         },
         "Paradox": {
@@ -668,6 +720,9 @@
             focus: "Frontline SMS/WhatsApp candidate chat & calendar scheduling",
             gated: true,
             credentials_note: "Paradox gates pricing behind corporate discovery. Prospective buyers must provide verified corporate email credentials, store/location counts, and ATS environment details at paradox.ai to schedule a demo and receive a quote.",
+            summary: "conversational usage contracts starting ~$12,000/year requiring corporate credentials",
+            single_takeaway: "Paradox automates frontline SMS/WhatsApp candidate chat and interview scheduling under custom enterprise contracts.",
+            hireko_takeaway: "Paradox requires corporate credentials and substantial enterprise commitments for SMS coordination; Hireko delivers direct, accessible two-way conversational AI video interviewing.",
             takeaway: "Paradox requires corporate credentials and substantial enterprise commitments for SMS coordination; Hireko delivers direct, accessible two-way conversational AI video interviewing."
         },
         "Humanly": {
@@ -682,6 +737,9 @@
             focus: "Conversational chat screening & post-interview note automation",
             gated: true,
             credentials_note: "Humanly requires corporate discovery credentials submitted at humanly.io. Sales representatives evaluate your hiring workflow, open requisitions, and candidate volume before generating custom pricing.",
+            summary: "chat screening contracts starting ~$200–$500/month requiring corporate credentials",
+            single_takeaway: "Humanly specializes in conversational chat screening, scheduling, and interview transcription under custom pricing.",
+            hireko_takeaway: "Humanly requires corporate discovery credentials for its chat screening; Hireko provides accessible, transparent conversational AI video and voice evaluations.",
             takeaway: "Humanly requires corporate discovery credentials for its chat screening; Hireko provides accessible, transparent conversational AI video and voice evaluations."
         },
         "HireVue": {
@@ -696,6 +754,9 @@
             focus: "Asynchronous video interviewing, AIS scoring, game-based challenges",
             gated: true,
             credentials_note: "HireVue gates pricing behind an ROI consultation. Enterprise buyers must submit corporate details via hirevue.com to receive bespoke annual quotes.",
+            summary: "enterprise annual contracts starting at ~$35,000+/year requiring corporate credentials",
+            single_takeaway: "HireVue is tailored for large enterprise organizations with annual contracts typically starting at ~$35,000/year and requiring corporate credentials.",
+            hireko_takeaway: "HireVue targets large enterprises with high-budget annual commitments; Hireko.ai provides accessible, agile two-way conversational AI interviews with rapid setup.",
             takeaway: "HireVue targets large enterprises with high-budget annual commitments; Hireko.ai provides accessible, agile two-way conversational AI interviews with rapid setup."
         },
         "Willo": {
@@ -709,6 +770,9 @@
             setup: "Immediate self-serve setup in under 5 minutes",
             focus: "Lightweight asynchronous one-way video, audio, and text screening",
             gated: false,
+            summary: "transparent self-serve SaaS starting at $37.50/month with a 15-day free trial",
+            single_takeaway: "Willo is ideal for simple, affordable one-way recorded video screening across all devices with self-serve onboarding.",
+            hireko_takeaway: "Willo is ideal for simple, affordable one-way video screening; choose Hireko.ai if you need intelligent, two-way conversational AI evaluation with real-time autograding.",
             takeaway: "Willo is ideal for simple, affordable one-way video screening; choose Hireko.ai if you need intelligent, two-way conversational AI evaluation with real-time autograding."
         },
         "Spark Hire": {
@@ -722,6 +786,9 @@
             setup: "Same-day setup and recruiter invite",
             focus: "One-way recorded video screening and live video interviews",
             gated: false,
+            summary: "transparent video screening subscriptions starting at $149/month",
+            single_takeaway: "Spark Hire provides straightforward recorded and live video interviewing with transparent pricing starting at $149/month.",
+            hireko_takeaway: "Spark Hire provides basic recorded video screening, while Hireko delivers interactive, autonomous conversational AI interviews with 2-minute autograding.",
             takeaway: "Spark Hire provides basic recorded video screening, while Hireko delivers interactive, autonomous conversational AI interviews with 2-minute autograding."
         },
         "CodeSignal": {
@@ -735,6 +802,9 @@
             setup: "Rapid for self-serve; custom ATS integration for enterprise",
             focus: "Technical coding assessments, multi-language IDE, and live paired coding",
             gated: false,
+            summary: "technical assessment plans starting at $79/month with enterprise custom tiers",
+            single_takeaway: "CodeSignal leads the market for dedicated IDE coding challenges and standardized technical developer assessments.",
+            hireko_takeaway: "CodeSignal leads for dedicated IDE coding challenges; Hireko provides unified conversational screening covering technical reasoning and soft skills.",
             takeaway: "CodeSignal leads for dedicated IDE coding challenges; Hireko provides unified conversational screening covering technical reasoning and soft skills."
         },
         "Coderbyte": {
@@ -748,6 +818,9 @@
             setup: "Instant setup with 3,000+ pre-built coding challenges",
             focus: "Developer skill tests, coding take-homes, and algorithmic evaluation",
             gated: false,
+            summary: "unlimited assessment plans at $199/month with a 14-day free trial",
+            single_takeaway: "Coderbyte offers an extensive library of 3,000+ coding challenges with unlimited assessments at $199/month.",
+            hireko_takeaway: "Coderbyte is great for developer test cases; Hireko offers comprehensive conversational AI screening for both technical and cross-functional teams.",
             takeaway: "Coderbyte is great for developer test cases; Hireko offers comprehensive conversational AI screening for both technical and cross-functional teams."
         },
         "Metaview": {
@@ -761,6 +834,9 @@
             setup: "Instant calendar integration (auto-joins Zoom, Meet, Teams)",
             focus: "AI interview intelligence, automated note-taking, and transcript summaries",
             gated: false,
+            summary: "per-seat SaaS subscriptions starting with 10 free calls then $45/seat/month",
+            single_takeaway: "Metaview is an AI note-taking intelligence overlay that automatically joins live interview calls to create structured summaries.",
+            hireko_takeaway: "Metaview is an intelligence overlay for human interviews; Hireko conducts autonomous AI screening interviews directly.",
             takeaway: "Metaview is an intelligence overlay for human interviews; Hireko conducts autonomous AI screening interviews directly."
         },
         "Interviewer.AI": {
@@ -774,6 +850,9 @@
             setup: "Fast setup with pre-built screening rubrics",
             focus: "Asynchronous video screening and AI-driven psychological trait scoring",
             gated: false,
+            summary: "video pre-screening plans starting at ~$99/month with a free starter trial",
+            single_takeaway: "Interviewer.AI provides asynchronous video screening and AI-driven psychological trait scoring starting at ~$99/month.",
+            hireko_takeaway: "Interviewer.AI scores recorded videos; Hireko provides transparent, rubric-aligned interactive two-way AI interviews.",
             takeaway: "Interviewer.AI scores recorded videos; Hireko provides transparent, rubric-aligned interactive two-way AI interviews."
         },
         "myInterview": {
@@ -787,6 +866,9 @@
             setup: "Fast mobile-first setup",
             focus: "Mobile-friendly asynchronous video screening and personality evaluation",
             gated: false,
+            summary: "freemium video screening with paid tiers from $59/month",
+            single_takeaway: "myInterview focuses on mobile-friendly asynchronous video screening and candidate engagement for high-volume roles.",
+            hireko_takeaway: "myInterview excels at basic high-volume mobile screening, while Hireko provides advanced conversational AI evaluation across technical and business roles.",
             takeaway: "myInterview excels at basic high-volume mobile screening, while Hireko provides advanced conversational AI evaluation across technical and business roles."
         },
         "Mercor": {
@@ -800,6 +882,9 @@
             setup: "Instant hiring without sourcing overhead",
             focus: "Pre-vetted global software developer marketplace",
             gated: false,
+            summary: "talent marketplace with 15%–30% markup on hired talent",
+            single_takeaway: "Mercor is an AI talent marketplace providing pre-vetted global software developers with markup pricing.",
+            hireko_takeaway: "Mercor is a talent marketplace; Hireko is an autonomous AI interviewing platform for your direct applicant pipeline.",
             takeaway: "Mercor is a talent marketplace; Hireko is an autonomous AI interviewing platform for your direct applicant pipeline."
         },
         "Greenhouse": {
@@ -813,6 +898,9 @@
             setup: "Multi-week ATS implementation and recruiter onboarding",
             focus: "Applicant Tracking System (ATS), candidate pipeline CRM, and structured hiring",
             gated: false,
+            summary: "quote-based ATS annual subscriptions tiered by company headcount",
+            single_takeaway: "Greenhouse serves as an enterprise applicant tracking system (ATS) and hiring operating system for structured recruiting.",
+            hireko_takeaway: "Greenhouse is the ATS system of record; Hireko integrates into Greenhouse to automate the interview and evaluation stage.",
             takeaway: "Greenhouse is the ATS system of record; Hireko integrates into Greenhouse to automate the interview and evaluation stage."
         },
         "Recruit41": {
@@ -826,31 +914,188 @@
             setup: "Fast agency onboarding",
             focus: "Outbound candidate sourcing and initial automated questionnaires",
             gated: false,
+            summary: "subscription SaaS for outbound sourcing and initial screening",
+            single_takeaway: "Recruit41 focuses on automated candidate sourcing, outbound reach-out, and initial screening questionnaires.",
+            hireko_takeaway: "Recruit41 focuses on candidate sourcing; Hireko automates the conversational video interview and competency evaluation.",
             takeaway: "Recruit41 focuses on candidate sourcing; Hireko automates the conversational video interview and competency evaluation."
         }
     };
 
-    function buildCompetitorPricingTable(compName, data) {
+    const ALL_PLATFORM_PRICING = { "Hireko.ai": HIREKO_PRICING_DATA, ...COMPETITOR_PRICING_DATA };
+
+    const PLATFORM_ALIASES = [
+        [/\bhireko(\.ai)?\b/i, "Hireko.ai"],
+        [/\bhirevue\b/i, "HireVue"],
+        [/\btalview\b/i, "Talview"],
+        [/\bmodern\s*hire\b/i, "Modern Hire"],
+        [/\bspark\s*hire\b/i, "Spark Hire"],
+        [/\bmyinterview\b/i, "myInterview"],
+        [/\bwillo\b/i, "Willo"],
+        [/\bcode\s*signal\b/i, "CodeSignal"],
+        [/\bcoder\s*byte\b/i, "Coderbyte"],
+        [/\bparadox\b/i, "Paradox"],
+        [/\bhumanly\b/i, "Humanly"],
+        [/\binterviewer(\.|\s*)ai\b/i, "Interviewer.AI"],
+        [/\bmetaview\b/i, "Metaview"],
+        [/\bmercor\b/i, "Mercor"],
+        [/\bgreenhouse\b/i, "Greenhouse"],
+        [/\brecruit\s*41\b/i, "Recruit41"]
+    ];
+
+    function identifyAllMentionedPlatforms(text) {
+        const str = text || "";
+        const matches = [];
+        for (const [regex, canonical] of PLATFORM_ALIASES) {
+            const m = str.match(regex);
+            if (m && typeof m.index === "number") {
+                matches.push({ index: m.index, name: canonical });
+            }
+        }
+        matches.sort((a, b) => a.index - b.index);
+        const seen = new Set();
+        const result = [];
+        for (const m of matches) {
+            if (!seen.has(m.name)) {
+                seen.add(m.name);
+                result.push(m.name);
+            }
+        }
+        return result;
+    }
+
+    function buildSinglePlatformPricingTable(platform) {
+        const data = ALL_PLATFORM_PRICING[platform];
+        if (!data) return buildGeneralPricingTable();
         const lines = [];
         if (data.gated) {
-            lines.push(`**${data.name}** does not publish public pricing tables on its website; access to pricing proposals, platform credentials, and sandbox environments requires submitting verified corporate credentials (business email, company size, volume) and completing an enterprise sales demo:\n`);
+            lines.push(`**${data.name}** does not publish public pricing tables on its website; access to pricing proposals, platform credentials, and sandbox environments requires submitting verified corporate credentials (business email, company size, volume) and completing an enterprise sales consultation:\n`);
         } else {
-            lines.push(`Here is a side-by-side pricing breakdown and comparison between **${data.name}** and **Hireko.ai**:\n`);
+            lines.push(`Here is the detailed pricing breakdown and subscription model for **${data.name}**:\n`);
         }
-        lines.push(`| Pricing Dimension | ${data.name} | Hireko.ai |`);
-        lines.push("| :--- | :--- | :--- |");
-        lines.push(`| **Pricing Model** | ${data.model} | ${HIREKO_PRICING_DIMENSIONS.model} |`);
-        lines.push(`| **Pricing Transparency** | ${data.transparency} | ${HIREKO_PRICING_DIMENSIONS.transparency} |`);
-        lines.push(`| **Credentials Required?** | ${data.credentials} | ${HIREKO_PRICING_DIMENSIONS.credentials} |`);
-        lines.push(`| **Cost / Rate** | ${data.cost} | ${HIREKO_PRICING_DIMENSIONS.cost} |`);
-        lines.push(`| **Trial / Sandbox Access** | ${data.trial} | ${HIREKO_PRICING_DIMENSIONS.trial} |`);
-        lines.push(`| **Setup & Onboarding** | ${data.setup} | ${HIREKO_PRICING_DIMENSIONS.setup} |`);
-        lines.push(`| **Core Focus** | ${data.focus} | ${HIREKO_PRICING_DIMENSIONS.focus} |`);
+        lines.push(`| Pricing Dimension | ${data.name} Details |`);
+        lines.push("| :--- | :--- |");
+        lines.push(`| **Pricing Model** | ${data.model} |`);
+        lines.push(`| **Pricing Transparency** | ${data.transparency} |`);
+        lines.push(`| **Credentials Required?** | ${data.credentials} |`);
+        lines.push(`| **Cost / Rate** | ${data.cost} |`);
+        lines.push(`| **Trial / Sandbox Access** | ${data.trial} |`);
+        lines.push(`| **Setup & Onboarding** | ${data.setup} |`);
+        lines.push(`| **Core Focus** | ${data.focus} |`);
 
         if (data.credentials_note) {
             lines.push(`\n* **Credentials & Intake:** ${data.credentials_note}`);
         }
-        lines.push(`\n**Summary Takeaway:** ${data.takeaway}`);
+        lines.push(`\n**Summary Takeaway:** ${data.single_takeaway || data.takeaway}`);
+        return lines.join("\n");
+    }
+
+    function buildMultiPlatformPricingTable(platforms) {
+        const valid = platforms.filter(p => ALL_PLATFORM_PRICING[p]);
+        if (!valid.length) return buildGeneralPricingTable();
+        if (valid.length === 1) return buildSinglePlatformPricingTable(valid[0]);
+
+        const platformNames = valid.length === 2 ? `**${valid[0]}** and **${valid[1]}**` : valid.slice(0, -1).map(p => `**${p}**`).join(", ") + `, and **${valid[valid.length - 1]}**`;
+        const lines = [`Here is a side-by-side pricing breakdown and comparison between ${platformNames}:\n`];
+
+        lines.push("| Pricing Dimension | " + valid.join(" | ") + " |");
+        lines.push("| :--- | " + valid.map(() => ":---").join(" | ") + " |");
+
+        const dims = [
+            ["Pricing Model", "model"],
+            ["Pricing Transparency", "transparency"],
+            ["Credentials Required?", "credentials"],
+            ["Cost / Rate", "cost"],
+            ["Trial / Sandbox Access", "trial"],
+            ["Setup & Onboarding", "setup"],
+            ["Core Focus", "focus"]
+        ];
+
+        for (const [label, key] of dims) {
+            lines.push(`| **${label}** | ` + valid.map(p => ALL_PLATFORM_PRICING[p][key] || "N/A").join(" | ") + " |");
+        }
+
+        const gatedNotes = [];
+        for (const p of valid) {
+            const pData = ALL_PLATFORM_PRICING[p];
+            if (pData.credentials_note) {
+                gatedNotes.push(`* **${p} Credentials & Intake:** ${pData.credentials_note}`);
+            }
+        }
+        if (gatedNotes.length) {
+            lines.push("");
+            lines.push(...gatedNotes);
+        }
+
+        lines.push("");
+        if (valid.length === 2) {
+            const [p1, p2] = valid;
+            const sum1 = ALL_PLATFORM_PRICING[p1].summary || ALL_PLATFORM_PRICING[p1].cost;
+            const sum2 = ALL_PLATFORM_PRICING[p2].summary || ALL_PLATFORM_PRICING[p2].cost;
+            lines.push(`**Summary Takeaway:** **${p1}** provides ${sum1}, whereas **${p2}** offers ${sum2}.`);
+        } else {
+            const parts = valid.map(p => `**${p}** (${ALL_PLATFORM_PRICING[p].summary || ALL_PLATFORM_PRICING[p].cost})`);
+            lines.push(`**Summary Takeaway:** Comparing platform pricing: ${parts.join("; ")}.`);
+        }
+
+        return lines.join("\n");
+    }
+
+    function buildSinglePlatformOverview(platform) {
+        const prof = ALL_PLATFORM_PROFILES[platform];
+        if (!prof) return "";
+        return [
+            `**${platform}** is an established platform focused on ${prof.core_purpose.toLowerCase()}:\n`,
+            `* **Core Purpose:** ${prof.core_purpose}.`,
+            `* **Key Features:** ${prof.key_features}.`,
+            `* **AI Capabilities:** ${prof.ai_capabilities}.`,
+            `* **Best For:** ${prof.best_for}.`,
+            `* **Pricing:** ${prof.pricing}.`,
+            `* **Limitations:** ${prof.limitations}.`,
+            `\n**Takeaway:** ${prof.single_takeaway || prof.takeaway || ""}`
+        ].join("\n");
+    }
+
+    function buildMultiPlatformComparisonTable(platforms) {
+        const valid = platforms.filter(p => ALL_PLATFORM_PROFILES[p]);
+        if (!valid.length) return "";
+        if (valid.length === 1) return buildSinglePlatformOverview(valid[0]);
+
+        const platformNames = valid.length === 2 ? `**${valid[0]}** and **${valid[1]}**` : valid.slice(0, -1).map(p => `**${p}**`).join(", ") + `, and **${valid[valid.length - 1]}**`;
+        const lines = [`Here is a side-by-side feature comparison between ${platformNames}:\n`];
+
+        lines.push("| Feature | " + valid.join(" | ") + " |");
+        lines.push("| :--- | " + valid.map(() => ":---").join(" | ") + " |");
+
+        const rows = [
+            ["Core purpose", "core_purpose"],
+            ["Key features", "key_features"],
+            ["AI capabilities", "ai_capabilities"],
+            ["Best for", "best_for"],
+            ["Pricing", "pricing"],
+            ["Limitations", "limitations"]
+        ];
+
+        for (const [label, key] of rows) {
+            lines.push(`| **${label}** | ` + valid.map(p => ALL_PLATFORM_PROFILES[p][key] || "N/A").join(" | ") + " |");
+        }
+
+        lines.push("");
+        if (valid.length === 2) {
+            const [p1, p2] = valid;
+            if (valid.includes("Hireko.ai")) {
+                const other = p1 === "Hireko.ai" ? p2 : p1;
+                const takeaway = COMPETITOR_PROFILES[other] && (COMPETITOR_PROFILES[other].hireko_takeaway || COMPETITOR_PROFILES[other].takeaway);
+                lines.push(`**Summary Takeaway:** ${takeaway || ""}`);
+            } else {
+                const best1 = (ALL_PLATFORM_PROFILES[p1].best_for || "").replace(/\.$/, "");
+                const best2 = (ALL_PLATFORM_PROFILES[p2].best_for || "").replace(/\.$/, "");
+                lines.push(`**Summary Takeaway:** While **${p1}** is best for ${best1.toLowerCase()}, **${p2}** is tailored for ${best2.toLowerCase()}.`);
+            }
+        } else {
+            const parts = valid.map(p => `**${p}** (${(ALL_PLATFORM_PROFILES[p].best_for || "").replace(/\.$/, "").toLowerCase()})`);
+            lines.push(`**Summary Takeaway:** Comparing these platforms: ${parts.join("; ")}.`);
+        }
+
         return lines.join("\n");
     }
 
@@ -880,44 +1125,6 @@
         return lines.join("\n");
     }
 
-    const COMPETITOR_ALIASES = {
-        "hirevue": "HireVue",
-        "talview": "Talview",
-        "modern hire": "Modern Hire",
-        "modernhire": "Modern Hire",
-        "spark hire": "Spark Hire",
-        "sparkhire": "Spark Hire",
-        "myinterview": "myInterview",
-        "willo": "Willo",
-        "codesignal": "CodeSignal",
-        "code signal": "CodeSignal",
-        "coderbyte": "Coderbyte",
-        "coder byte": "Coderbyte",
-        "paradox": "Paradox",
-        "humanly": "Humanly",
-        "interviewer.ai": "Interviewer.AI",
-        "interviewer ai": "Interviewer.AI",
-        "interviewerai": "Interviewer.AI",
-        "metaview": "Metaview",
-        "mercor": "Mercor",
-        "greenhouse": "Greenhouse",
-        "recruit41": "Recruit41",
-        "recruit 41": "Recruit41"
-    };
-
-    function identifyCompetitor(text) {
-        const lower = text.toLowerCase();
-        for (const [alias, canonical] of Object.entries(COMPETITOR_ALIASES)) {
-            const regex = new RegExp(`\\b${alias}\\b`, "i");
-            if (regex.test(lower)) return canonical;
-        }
-        return null;
-    }
-
-    // ==========================================
-    // STANDALONE CLIENT-SIDE ADVISOR ENGINE
-    // Implements all 5 Response Rules flawlessly
-    // ==========================================
     function evaluateAdvisorClientSide(rawQuery) {
         const q = (rawQuery || "").trim();
         const qLower = q.toLowerCase();
@@ -939,27 +1146,49 @@
             };
         }
 
-        const compName = identifyCompetitor(qLower);
+        const platforms = identifyAllMentionedPlatforms(q);
+        const compName = platforms.find(p => p !== "Hireko.ai") || platforms[0] || null;
 
         // Scope check: must be greeting, Hireko, in-scope competitor, or recruiting/interview benchmark
         const isHireko = qLower.includes("hireko") || qLower.includes("advisor") || qLower.includes("platform");
         const isGeneralTopic = /(interview|video|coding|pricing|cost|feature|assessment|proctor|ats|screening|rubric)/i.test(qLower);
 
-        if (!compName && !isHireko && !isGeneralTopic) {
+        if (!platforms.length && !isHireko && !isGeneralTopic) {
             return {
                 answer: "I am Hireko's AI Product Advisor. I can ONLY answer questions comparing Hireko.ai with our supported competitors: HireVue, Talview, Modern Hire, Spark Hire, myInterview, Willo, CodeSignal, Paradox, Humanly, Interviewer.AI, Metaview, Mercor, Greenhouse, Recruit41, and Coderbyte.\n\nPlease ask a comparison or capability question concerning Hireko.ai and any of these platforms!",
                 sources: []
             };
         }
 
+        // Sources helper
+        function getSourcesForPlatforms(plats) {
+            const s = [];
+            for (const p of plats) {
+                const data = ALL_PLATFORM_PRICING[p];
+                if (data) {
+                    if (data.slug === "hireko") s.push("https://hireko.ai");
+                    else s.push(`https://hireko.ai/compare/${data.slug}-vs-hireko`);
+                }
+            }
+            if (!s.length) {
+                s.push("https://hireko.ai/compare/talview-vs-hireko", "https://hireko.ai/compare/hirevue-vs-hireko");
+            }
+            return s;
+        }
+
         // 1. PRICING QUESTIONS -> ALWAYS DETAILED TABULAR COLUMN (Markdown Table)
         const isPricingQuery = /(pricing|price|cost|how much|rate|fee|subscription)/i.test(qLower);
         if (isPricingQuery) {
-            if (compName && COMPETITOR_PRICING_DATA[compName]) {
-                const data = COMPETITOR_PRICING_DATA[compName];
+            if (platforms.length >= 2) {
                 return {
-                    answer: buildCompetitorPricingTable(compName, data),
-                    sources: [`https://hireko.ai/compare/${data.slug}-vs-hireko`]
+                    answer: buildMultiPlatformPricingTable(platforms),
+                    sources: getSourcesForPlatforms(platforms)
+                };
+            }
+            if (platforms.length === 1) {
+                return {
+                    answer: buildSinglePlatformPricingTable(platforms[0]),
+                    sources: getSourcesForPlatforms(platforms)
                 };
             }
             return {
@@ -974,12 +1203,33 @@
         }
 
         // 2. SMALL KEYWORDS & SHORT SENTENCES RULE: reply in two lines of sentence (Non-pricing only)
-        if (words.length <= 4 && !/(vs|compare|difference|better than|which is better)/i.test(qLower)) {
-            if (compName && COMPETITOR_PROFILES[compName]) {
-                const c = COMPETITOR_PROFILES[compName];
+        const isComparison = /( vs | vs\. |vs |compare|difference|which is better|which tool is best|which platform is better|which is best|better than|side-by-side)/i.test(qLower);
+        if (words.length <= 4 && !isComparison) {
+            if (platforms.length === 1) {
+                const p = platforms[0];
+                if (p === "Hireko.ai") {
+                    return {
+                        answer: "Hireko.ai conducts autonomous two-way conversational AI video interviews with real-time autograding.\nIt provides transparent SaaS subscription tiers and guided interactive pilot demos.",
+                        sources: ["https://hireko.ai"]
+                    };
+                }
+                const prof = COMPETITOR_PROFILES[p] || {};
+                const sUrl = `https://hireko.ai/compare/${prof.slug || p.toLowerCase()}-vs-hireko`;
+                if (qLower.includes("video")) {
+                    return {
+                        answer: `${p} specializes in ${prof.core_purpose ? prof.core_purpose.toLowerCase() : "video screening"}.\n${prof.single_takeaway || prof.takeaway || ""}`,
+                        sources: [sUrl]
+                    };
+                }
+                if (qLower.includes("room") || qLower.includes("live")) {
+                    return {
+                        answer: `${p} supports live interviewing features focused on ${prof.best_for ? prof.best_for.toLowerCase() : "collaborative assessments"}.\n${prof.single_takeaway || prof.takeaway || ""}`,
+                        sources: [sUrl]
+                    };
+                }
                 return {
-                    answer: `${compName} is specialized in ${c.core_purpose.toLowerCase()}.\nHireko.ai delivers interactive two-way conversational AI video interviews with real-time autograding and adaptive rubrics.`,
-                    sources: [`https://hireko.ai/compare/${c.slug}-vs-hireko`]
+                    answer: `${p} is designed for ${prof.core_purpose ? prof.core_purpose.toLowerCase() : "recruiting"}.\n${prof.single_takeaway || prof.takeaway || ""}`,
+                    sources: [sUrl]
                 };
             }
             if (qLower.includes("live video") || qLower.includes("live room") || qLower.includes("live")) {
@@ -990,7 +1240,7 @@
             }
             if (qLower.includes("coding") || qLower.includes("code") || qLower.includes("technical")) {
                 return {
-                    answer: "Hireko integrates live interactive coding assessments evaluated alongside real-time conversational reasoning.\nFor dedicated algorithmic testing, platforms like CodeSignal and Coderbyte provide specialized multi-language coding sandboxes.",
+                    answer: "For technical coding assessments, CodeSignal and Coderbyte provide live IDE environments with automated test suites.\nHireko.ai complements technical hiring by evaluating candidate logic, system architecture, and communication through conversational AI.",
                     sources: ["https://hireko.ai/compare/codesignal-vs-hireko", "https://hireko.ai/compare/coderbyte-vs-hireko"]
                 };
             }
@@ -1002,84 +1252,64 @@
 
         // 3. TECHNICAL CODING BENCHMARK
         if (/(technical coding|coding interview|coding assessment|best for coding|best for technical)/i.test(qLower)) {
-            const cs = COMPETITOR_PROFILES["CodeSignal"];
-            const cb = COMPETITOR_PROFILES["Coderbyte"];
-            const hk = HIREKO_PROFILE;
-            const answer = [
-                "**CodeSignal** and **Coderbyte** are the benchmark leaders for live technical coding environments, while **Hireko.ai** provides conversational AI technical screening.\n",
-                "| Feature | CodeSignal | Coderbyte | Hireko.ai |",
-                "| :--- | :--- | :--- | :--- |",
-                `| **Core purpose** | ${cs.core_purpose} | ${cb.core_purpose} | ${hk.core_purpose} |`,
-                `| **Key features** | ${cs.key_features} | ${cb.key_features} | ${hk.key_features} |`,
-                `| **AI capabilities** | ${cs.ai_capabilities} | ${cb.ai_capabilities} | ${hk.ai_capabilities} |`,
-                `| **Best for** | ${cs.best_for} | ${cb.best_for} | ${hk.best_for} |`,
-                `| **Pricing** | ${cs.pricing} | ${cb.pricing} | ${hk.pricing} |`,
-                `| **Limitations** | ${cs.limitations} | ${cb.limitations} | ${hk.limitations} |`,
-                "\n**Summary Takeaway:** For deep live collaborative IDE coding, CodeSignal and Coderbyte lead the market; for holistic, conversational technical and soft-skill screening, Hireko provides the best unified experience."
-            ].join("\n");
+            if (platforms.length <= 1) {
+                const cs = COMPETITOR_PROFILES["CodeSignal"];
+                const cb = COMPETITOR_PROFILES["Coderbyte"];
+                const hk = HIREKO_PROFILE;
+                const answer = [
+                    "**CodeSignal** and **Coderbyte** are the benchmark leaders for live technical coding environments, while **Hireko.ai** provides conversational AI technical screening.\n",
+                    "| Feature | CodeSignal | Coderbyte | Hireko.ai |",
+                    "| :--- | :--- | :--- | :--- |",
+                    `| **Core purpose** | ${cs.core_purpose} | ${cb.core_purpose} | ${hk.core_purpose} |`,
+                    `| **Key features** | ${cs.key_features} | ${cb.key_features} | ${hk.key_features} |`,
+                    `| **AI capabilities** | ${cs.ai_capabilities} | ${cb.ai_capabilities} | ${hk.ai_capabilities} |`,
+                    `| **Best for** | ${cs.best_for} | ${cb.best_for} | ${hk.best_for} |`,
+                    `| **Pricing** | ${cs.pricing} | ${cb.pricing} | ${hk.pricing} |`,
+                    `| **Limitations** | ${cs.limitations} | ${cb.limitations} | ${hk.limitations} |`,
+                    "\n**Summary Takeaway:** For deep live collaborative IDE coding, CodeSignal and Coderbyte lead the market; for holistic, conversational technical and soft-skill screening, Hireko provides the best unified experience."
+                ].join("\n");
+                return {
+                    answer: answer,
+                    sources: ["https://hireko.ai/compare/codesignal-vs-hireko", "https://hireko.ai/compare/coderbyte-vs-hireko"]
+                };
+            }
+        }
+
+        // 4. COMPARISON QUESTIONS -> MARKDOWN TABLE containing ONLY the mentioned platforms
+        if (isComparison) {
+            if (platforms.length >= 2) {
+                return {
+                    answer: buildMultiPlatformComparisonTable(platforms),
+                    sources: getSourcesForPlatforms(platforms)
+                };
+            }
+            if (platforms.length === 1) {
+                if (platforms[0] !== "Hireko.ai") {
+                    return {
+                        answer: buildMultiPlatformComparisonTable([platforms[0], "Hireko.ai"]),
+                        sources: getSourcesForPlatforms([platforms[0], "Hireko.ai"])
+                    };
+                }
+                return {
+                    answer: buildSinglePlatformOverview("Hireko.ai"),
+                    sources: ["https://hireko.ai"]
+                };
+            }
+        }
+
+        // 5. MULTIPLE PLATFORMS MENTIONED WITHOUT EXPLICIT COMPARISON KEYWORD
+        if (platforms.length >= 2) {
             return {
-                answer: answer,
-                sources: ["https://hireko.ai/compare/codesignal-vs-hireko", "https://hireko.ai/compare/coderbyte-vs-hireko"]
+                answer: buildMultiPlatformComparisonTable(platforms),
+                sources: getSourcesForPlatforms(platforms)
             };
         }
 
-        // 4. COMPARISON QUESTIONS -> MARKDOWN TABLE (Rule 3)
-        const isComparison = /( vs | vs\. |vs |compare|difference|which is better|which tool is best|which platform is better|which is best|better than|side-by-side)/i.test(qLower);
-        if (isComparison && compName && COMPETITOR_PROFILES[compName]) {
-            const c = COMPETITOR_PROFILES[compName];
-            const hk = HIREKO_PROFILE;
-            const answer = [
-                `Here is a side-by-side comparison between **Hireko.ai** and **${compName}**:\n`,
-                `| Feature | Hireko.ai | ${compName} |`,
-                "| :--- | :--- | :--- |",
-                `| **Core purpose** | ${hk.core_purpose} | ${c.core_purpose} |`,
-                `| **Key features** | ${hk.key_features} | ${c.key_features} |`,
-                `| **AI capabilities** | ${hk.ai_capabilities} | ${c.ai_capabilities} |`,
-                `| **Best for** | ${hk.best_for} | ${c.best_for} |`,
-                `| **Pricing** | ${hk.pricing} | ${c.pricing} |`,
-                `| **Limitations** | ${hk.limitations} | ${c.limitations} |`,
-                `\n**Summary Takeaway:** ${c.takeaway}`
-            ].join("\n");
+        // 6. SINGLE PLATFORM QUESTION (Rule 4: structured bullets, answer ONLY about that platform)
+        if (platforms.length === 1) {
             return {
-                answer: answer,
-                sources: [`https://hireko.ai/compare/${c.slug}-vs-hireko`]
-            };
-        }
-
-        // 5. TALVIEW LIVE ROOMS SPECIFIC CAPABILITY QUESTION
-        if (compName === "Talview" && /(live room|live interview|room)/i.test(qLower)) {
-            const c = COMPETITOR_PROFILES["Talview"];
-            const answer = [
-                "**YES** — Talview provides dedicated live interview rooms equipped with remote proctoring and collaborative code editors.\n",
-                "* **Live Capability:** Supports synchronous video interviewing with multi-party rooms and recording.",
-                "* **Built-In Tools:** Features a shared collaborative code editor supporting 20+ programming languages.",
-                "* **Proctoring:** Live audio/video automated proctoring with facial detection and browser lockdown.",
-                "* **Pricing:** Custom annual enterprise contracts based on user licenses.",
-                "* **Hireko Difference:** Talview requires human interviewers in live rooms; Hireko provides an autonomous AI interviewer that conducts conversations independently.",
-                `\n**Takeaway:** ${c.takeaway}`
-            ].join("\n");
-            return {
-                answer: answer,
-                sources: ["https://hireko.ai/compare/talview-vs-hireko"]
-            };
-        }
-
-        // 6. SINGLE COMPETITOR QUESTION (Rule 4: structured bullets, no long paragraphs)
-        if (compName && COMPETITOR_PROFILES[compName]) {
-            const c = COMPETITOR_PROFILES[compName];
-            const answer = [
-                `**${compName}** is an established platform focused on ${c.core_purpose.toLowerCase()}:\n`,
-                `* **Core Purpose:** ${c.core_purpose}.`,
-                `* **Key Features:** ${c.key_features}.`,
-                `* **AI Capabilities:** ${c.ai_capabilities}.`,
-                `* **Pricing:** ${c.pricing}.`,
-                `* **Hireko Difference:** Hireko provides real-time, interactive two-way conversational AI interviewing, while ${compName} emphasizes ${c.core_purpose.toLowerCase()}.`,
-                `* **Limitations:** ${c.limitations}.`,
-                `\n**Takeaway:** ${c.takeaway}`
-            ].join("\n");
-            return {
-                answer: answer,
-                sources: [`https://hireko.ai/compare/${c.slug}-vs-hireko`]
+                answer: buildSinglePlatformOverview(platforms[0]),
+                sources: getSourcesForPlatforms(platforms)
             };
         }
 
