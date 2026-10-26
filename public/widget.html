@@ -46,6 +46,59 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Maximized Fullscreen State */
+        .chat-widget-container.maximized {
+            position: fixed !important;
+            inset: 0 !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+            z-index: 999999 !important;
+            margin: 0 !important;
+            border: none !important;
+        }
+
+        /* Minimized Collapsed State */
+        .chat-widget-container.minimized {
+            height: 64px !important;
+            max-height: 64px !important;
+            border-radius: 16px !important;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15) !important;
+        }
+
+        .chat-widget-container.minimized .messages-container,
+        .chat-widget-container.minimized .starter-chips,
+        .chat-widget-container.minimized .input-bar {
+            display: none !important;
+        }
+
+        .chat-widget-container.minimized .widget-header {
+            cursor: pointer;
+            padding: 12px 20px;
+        }
+
+        .minimized-tag {
+            display: none;
+            font-size: 11px;
+            background: rgba(255, 255, 255, 0.22);
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #E0F2FE;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .chat-widget-container.minimized .minimized-tag {
+            display: inline-block;
         }
 
         /* Header */
@@ -56,12 +109,14 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            user-select: none;
         }
 
         .header-left {
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
 
         .advisor-avatar {
@@ -73,6 +128,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            flex-shrink: 0;
         }
 
         .advisor-avatar svg {
@@ -89,7 +145,8 @@
 
         .header-actions {
             display: flex;
-            gap: 8px;
+            align-items: center;
+            gap: 6px;
         }
 
         .action-btn {
@@ -106,6 +163,31 @@
 
         .action-btn:hover {
             background: rgba(255, 255, 255, 0.35);
+        }
+
+        .action-icon-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .action-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+        }
+
+        .action-icon-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         /* Message List */
@@ -361,16 +443,25 @@
 </head>
 <body>
 
-<div class="chat-widget-container">
-    <header class="widget-header">
-        <div class="header-left">
+<div class="chat-widget-container" id="chatWidgetContainer">
+    <header class="widget-header" id="widgetHeader">
+        <div class="header-left" onclick="handleHeaderClick(event)">
             <div class="advisor-avatar">
                 <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2zM7.5 13A1.5 1.5 0 1 0 9 14.5 1.5 1.5 0 0 0 7.5 13zm9 0a1.5 1.5 0 1 0 1.5 1.5 1.5 0 0 0-1.5-1.5z"/></svg>
             </div>
-            <div class="header-title">Hireko AI Product Advisor</div>
+            <div>
+                <div class="header-title">Hireko AI Product Advisor</div>
+                <div class="minimized-tag" id="minimizedTag">Chat minimized • Click to expand</div>
+            </div>
         </div>
         <div class="header-actions">
-            <button class="action-btn" onclick="resetConversation()">New Chat</button>
+            <button class="action-btn" onclick="resetConversation(event)" title="Start a fresh chat">New Chat</button>
+            <button class="action-icon-btn" id="minimizeBtn" onclick="toggleMinimize(event)" title="Minimize chat" aria-label="Minimize chat">
+                <svg id="minimizeIcon" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
+            </button>
+            <button class="action-icon-btn" id="maximizeBtn" onclick="toggleMaximize(event)" title="Maximize chat" aria-label="Maximize chat">
+                <svg id="maximizeIcon" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            </button>
         </div>
     </header>
 
@@ -408,6 +499,15 @@
     const messagesContainer = document.getElementById("messagesContainer");
     const userInput = document.getElementById("userInput");
     const sendBtn = document.getElementById("sendBtn");
+    const chatWidgetContainer = document.getElementById("chatWidgetContainer");
+    const minimizeBtn = document.getElementById("minimizeBtn");
+    const maximizeBtn = document.getElementById("maximizeBtn");
+    const minimizeIcon = document.getElementById("minimizeIcon");
+    const maximizeIcon = document.getElementById("maximizeIcon");
+
+    let isMinimized = false;
+    let isMaximized = false;
+    let conversationHistory = [];
 
     // ==========================================
     // GROUNDED PRODUCT & COMPETITOR KNOWLEDGE
@@ -1125,7 +1225,7 @@
         return lines.join("\n");
     }
 
-    function evaluateAdvisorClientSide(rawQuery) {
+    function evaluateAdvisorClientSide(rawQuery, history = []) {
         const q = (rawQuery || "").trim();
         const qLower = q.toLowerCase();
         const words = qLower.match(/\b\w+\b/g) || [];
@@ -1146,14 +1246,30 @@
             };
         }
 
-        const platforms = identifyAllMentionedPlatforms(q);
-        const compName = platforms.find(p => p !== "Hireko.ai") || platforms[0] || null;
+        let platforms = identifyAllMentionedPlatforms(q);
+
+        // Resolve context from conversation history if query is a follow-up (e.g. "what about pricing?", "does it have proctoring?")
+        let activePlatform = platforms[0] || null;
+        if (!activePlatform && history && history.length) {
+            for (let i = history.length - 1; i >= 0; i--) {
+                const prev = history[i];
+                if (prev && prev.role === "user") {
+                    const prevPlats = identifyAllMentionedPlatforms(prev.content || "");
+                    if (prevPlats.length) {
+                        activePlatform = prevPlats[0];
+                        if (!platforms.length) platforms = prevPlats;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!activePlatform) activePlatform = "Hireko.ai";
 
         // Scope check: must be greeting, Hireko, in-scope competitor, or recruiting/interview benchmark
-        const isHireko = qLower.includes("hireko") || qLower.includes("advisor") || qLower.includes("platform");
-        const isGeneralTopic = /(interview|video|coding|pricing|cost|feature|assessment|proctor|ats|screening|rubric)/i.test(qLower);
+        const isHireko = qLower.includes("hireko") || qLower.includes("advisor") || qLower.includes("platform") || qLower.includes("your product") || qLower.includes("your tool");
+        const isHiringDomain = /(interview|video|coding|pricing|price|cost|fee|rate|feature|assessment|proctor|ats|screening|rubric|scorecard|autograd|grade|accuracy|demo|pilot|trial|onboarding|get started|bias|fairness|gdpr|compliance|candidate|recruiter|practice|sandbox|pros and cons|strengths|weaknesses|roadmap|what can you do|help me)/i.test(qLower);
 
-        if (!platforms.length && !isHireko && !isGeneralTopic) {
+        if (!platforms.length && !isHireko && !isHiringDomain) {
             return {
                 answer: "I am Hireko's AI Product Advisor. I can ONLY answer questions comparing Hireko.ai with our supported competitors: HireVue, Talview, Modern Hire, Spark Hire, myInterview, Willo, CodeSignal, Paradox, Humanly, Interviewer.AI, Metaview, Mercor, Greenhouse, Recruit41, and Coderbyte.\n\nPlease ask a comparison or capability question concerning Hireko.ai and any of these platforms!",
                 sources: []
@@ -1177,7 +1293,7 @@
         }
 
         // 1. PRICING QUESTIONS -> ALWAYS DETAILED TABULAR COLUMN (Markdown Table)
-        const isPricingQuery = /(pricing|price|cost|how much|rate|fee|subscription)/i.test(qLower);
+        const isPricingQuery = /\b(pricing|price|prices|cost|costs|costing|how much|rate|rates|fee|fees|subscription|subscriptions|tiers)\b/i.test(qLower);
         if (isPricingQuery) {
             if (platforms.length >= 2) {
                 return {
@@ -1250,7 +1366,7 @@
             };
         }
 
-        // 3. TECHNICAL CODING BENCHMARK
+        // 3. TECHNICAL CODING BENCHMARK (Multi-competitor table)
         if (/(technical coding|coding interview|coding assessment|best for coding|best for technical)/i.test(qLower)) {
             if (platforms.length <= 1) {
                 const cs = COMPETITOR_PROFILES["CodeSignal"];
@@ -1283,21 +1399,447 @@
                     sources: getSourcesForPlatforms(platforms)
                 };
             }
-            if (platforms.length === 1) {
-                if (platforms[0] !== "Hireko.ai") {
-                    return {
-                        answer: buildMultiPlatformComparisonTable([platforms[0], "Hireko.ai"]),
-                        sources: getSourcesForPlatforms([platforms[0], "Hireko.ai"])
-                    };
-                }
+            if (platforms.length === 1 && platforms[0] !== "Hireko.ai") {
                 return {
-                    answer: buildSinglePlatformOverview("Hireko.ai"),
-                    sources: ["https://hireko.ai"]
+                    answer: buildMultiPlatformComparisonTable([platforms[0], "Hireko.ai"]),
+                    sources: getSourcesForPlatforms([platforms[0], "Hireko.ai"])
                 };
             }
         }
 
-        // 5. MULTIPLE PLATFORMS MENTIONED WITHOUT EXPLICIT COMPARISON KEYWORD
+        // 5. TOPIC & INTENT ENGINE: Specific inquiries (Eliminates repeated answers)
+        // Candidate Evaluation, Scoring, Rubrics, Autograding & Accuracy
+        if (/(evaluat|scoring|scorecard|rubric|autograd|grade|accuracy|how does it score|how does hireko score|how does hirevue score|how does it evaluate|how does hireko evaluate|interview analysis|candidate assessment)/i.test(qLower)) {
+            if (activePlatform === "HireVue") {
+                return {
+                    answer: [
+                        "**HireVue** evaluates candidates through Automated Interview Scoring (AIS) and pre-hire psychometric assessments:\n",
+                        "* **Automated Interview Scoring (AIS):** Proprietary machine learning models analyze candidate audio and speech transcripts against validated competency criteria.",
+                        "* **I/O Psychology Foundations:** Algorithms are built upon industrial-organizational psychology validation studies for enterprise compliance.",
+                        "* **Game-Based Assessments:** Measures cognitive agility, problem-solving, and emotional intelligence through interactive mini-games.",
+                        "* **Speech-Only Focus:** Discontinued facial expression analysis in early 2021 to ensure regulatory compliance and focus strictly on verbal and text reasoning.",
+                        "* **Enterprise ATS Integration:** Pushes candidate evaluation tiers and AIS percentile rankings directly into enterprise ATS workflows.",
+                        "\n**Summary Takeaway:** HireVue provides deep, validated enterprise scoring models, but requires extensive custom setup and lacks real-time conversational follow-ups."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["HireVue"])
+                };
+            }
+            if (activePlatform === "Metaview") {
+                return {
+                    answer: [
+                        "**Metaview** provides automated interview intelligence and note-taking during human-led video interviews:\n",
+                        "* **Automated Note-Taking:** Joins Zoom, Google Meet, or MS Teams calls silently to transcribe and extract structured recruiter notes.",
+                        "* **Competency Summaries:** Organizes candidate responses by question category, key metrics, and recruiter highlights.",
+                        "* **Recruiter Productivity:** Saves hiring teams 15–20 minutes of manual documentation and typing per interview.",
+                        "* **Passive AI Assistant:** Metaview does not conduct or grade interviews autonomously; a human interviewer must still lead the call.",
+                        "\n**Summary Takeaway:** Metaview automates interview notes for human recruiters, while Hireko conducts autonomous conversational AI interviews."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Metaview"])
+                };
+            }
+            if (activePlatform === "CodeSignal") {
+                return {
+                    answer: [
+                        "**CodeSignal** evaluates candidate technical skills through standardized Coding Scores and automated test suites:\n",
+                        "* **Standardized Coding Score:** Objective 300–850 scoring benchmark measuring code speed, correctness, and problem-solving.",
+                        "* **Automated Test Runners:** Executes code against extensive hidden unit test cases, edge cases, and memory/time constraints.",
+                        "* **Cosmo AI Assistant:** Provides contextual guidance and automated code review during live and asynchronous assessments.",
+                        "* **Strict Engineering Focus:** Tailored exclusively for software engineering roles rather than soft-skill or behavioral evaluation.",
+                        "\n**Summary Takeaway:** CodeSignal is the benchmark for objective developer code evaluation, while Hireko provides holistic conversational technical screening."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["CodeSignal"])
+                };
+            }
+            return {
+                answer: [
+                    "**Hireko.ai** evaluates candidates using multi-dimensional conversational AI autograding that delivers structured competency scorecards in ~2 minutes:\n",
+                    "* **Speech & Reasoning Analysis:** Evaluates technical reasoning, domain vocabulary, problem structuring, and communication clarity through live two-way spoken dialogue.",
+                    "* **Objective Rubric Alignment:** Automatically maps candidate responses against customizable, role-specific competency rubrics and job benchmarks.",
+                    "* **Evidence-Backed Scorecards:** Every competency rating is substantiated by timestamped transcript quotes and audio clips, eliminating 'black-box' AI concerns.",
+                    "* **Rapid ~2-Minute Delivery:** Recruiters receive autograded scorecards, candidate highlights, and flagged risk areas within 2 minutes of interview completion.",
+                    "* **Human-in-the-Loop Oversight:** AI ratings provide objective decision support; human recruiters retain full control to review, validate, and override scores.",
+                    "\n**Summary Takeaway:** Hireko replaces subjective manual interview reviews with transparent, evidence-backed competency scorecards in minutes."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Live Video vs Asynchronous / One-Way Video / Rooms
+        if (/(live\s+(video|interview|room|rooms|audio|call|session)|interview\s*rooms?|live\s*rooms?|rooms|one-way|async|asynchronous|two-way|synchronous|recorded video|real-time video|video rooms?)/i.test(qLower)) {
+            if (activePlatform === "Talview") {
+                return {
+                    answer: [
+                        "**Talview** supports dedicated live interview rooms with collaborative tools and proctoring:\n",
+                        "* **Live Interview Rooms:** Real-time multi-party video conferencing for panel interviews and university campus recruitment.",
+                        "* **Collaborative Code Editor:** Integrated live coding whiteboard for synchronous technical evaluations.",
+                        "* **Dual Proctoring Modes:** Supports automated AI proctoring flags alongside live human proctoring oversight during live sessions.",
+                        "* **Asynchronous Flexibility:** Also provides recorded asynchronous video screening on the same unified platform.",
+                        "\n**Summary Takeaway:** Talview delivers dedicated live interview rooms with dual proctoring, ideal for campus drives and panel evaluations."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Talview"])
+                };
+            }
+            if (activePlatform === "Spark Hire") {
+                return {
+                    answer: [
+                        "**Spark Hire** supports both live video interviews and asynchronous recorded video screening:\n",
+                        "* **Live Video Interviews:** Real-time synchronous video meetings for hiring managers and recruiters.",
+                        "* **One-Way Video Screening:** Candidates record responses to set questions on their own schedule.",
+                        "* **Team Collaboration:** Easy sharing of candidate recordings with hiring managers, including timestamped comments.",
+                        "* **No Conversational AI:** Spark Hire does not offer autonomous AI-led interviews; human recruiters lead live calls.",
+                        "\n**Summary Takeaway:** Spark Hire provides accessible live and recorded video interviewing, but lacks autonomous conversational AI capabilities."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Spark Hire"])
+                };
+            }
+            if (activePlatform === "Willo") {
+                return {
+                    answer: [
+                        "**Willo** is a dedicated asynchronous one-way video screening platform designed for simplicity:\n",
+                        "* **Asynchronous One-Way Video:** Candidates record video, audio, or text answers to preset questions on their own schedule.",
+                        "* **Browser-Based (No App):** Candidates record directly from any mobile or desktop web browser with zero software downloads.",
+                        "* **No Live Video Rooms:** Willo does not host live synchronous meetings or live interview rooms.",
+                        "* **Showcase Feature:** Easily share candidate recorded responses and showcase reels with hiring managers.",
+                        "\n**Summary Takeaway:** Willo is built for simple, asynchronous one-way video screening across all devices; it does not support live video rooms."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Willo"])
+                };
+            }
+            return {
+                answer: [
+                    "Here is the distinction: **live video** means real-time two-way interaction; **asynchronous (one-way) video** means candidates record answers for later review:\n",
+                    "* **Hireko.ai:** Live two-way conversational AI video interviews where the AI interviewer speaks and adapts in real-time.",
+                    "* **Talview & Spark Hire:** Support dedicated live video rooms for panel interviews, collaborative coding, and campus hiring.",
+                    "* **Willo & myInterview:** Purely asynchronous one-way video screening where candidates record responses on their own schedule.",
+                    "* **HireVue:** Enterprise tiers support both asynchronous recorded video screening and live video rooms.",
+                    "* **CodeSignal & Coderbyte:** Feature live collaborative video paired with in-browser IDE coding environments.",
+                    "* **Metaview & Paradox:** Do not host video rooms natively; they integrate with external tools like Zoom or Microsoft Teams.",
+                    "\n**Summary Takeaway:** Choose Hireko for autonomous live conversational video screening; choose Willo for lightweight recorded screening; choose Talview for proctored live rooms."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Proctoring, Anti-Cheating & Integrity
+        if (/(proctor|proctoring|cheat|cheating|integrity|tab switch|chatgpt|anti-cheat|lockdown|facial recognition|impersonat|plagiarism)/i.test(qLower)) {
+            if (activePlatform === "Talview") {
+                return {
+                    answer: [
+                        "**Talview** provides comprehensive automated and live proctoring through its proprietary **Alvy AI** engine:\n",
+                        "* **Alvy AI Proctoring:** Automated facial tracking, gaze detection, multiple face detection, and secondary device alerts.",
+                        "* **Secure Exam Browser:** Enforces a lockdown browser environment disabling secondary monitors, tab switching, and keyboard shortcuts.",
+                        "* **Dual Proctoring Modes:** Supports automated AI violation flagging as well as 1:many live human proctor oversight.",
+                        "* **Audit Reports:** Generates detailed compliance audit logs with timestamped video evidence for high-stakes credentialing.",
+                        "\n**Summary Takeaway:** Talview is a specialized leader for strict lockdown proctoring and university campus examination integrity."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Talview"])
+                };
+            }
+            return {
+                answer: [
+                    "**Hireko.ai** safeguards interview integrity through conversational adaptability, browser focus tracking, and multi-speaker detection:\n",
+                    "* **Dynamic Adaptive Follow-ups:** Because Hireko's AI asks spontaneous follow-up questions tailored to candidate answers, applicants cannot read from pre-written scripts or ChatGPT prompts.",
+                    "* **Tab & Window Focus Monitoring:** Detects when a candidate switches browser tabs, leaves the interview window, or accesses external applications.",
+                    "* **Multi-Voice & Presence Alerts:** Flags background voices, multiple speakers, or candidate absence during the interview session.",
+                    "* **Candidate-Friendly Integrity:** Avoids invasive spyware-style lockdowns, maintaining candidate comfort while safeguarding assessment fairness.",
+                    "* **Transparent Integrity Score:** Delivers a clear integrity summary alongside the candidate competency scorecard for recruiter review.",
+                    "\n**Summary Takeaway:** Hireko's interactive conversational AI naturally deters generative AI cheating while providing a respectful, non-invasive candidate experience."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Game-Based Assessments & Psychometrics
+        if (/(game-based|game assessment|gamified|psychometric|virtual job tryout|vjt)/i.test(qLower)) {
+            return {
+                answer: [
+                    "**HireVue** and **Modern Hire** provide gamified cognitive challenges; **Hireko.ai** focuses on conversational competency assessments:\n",
+                    "* **HireVue Game Challenges:** Short cognitive mini-games evaluating candidate memory, attention, numerical reasoning, and problem-solving.",
+                    "* **Modern Hire Virtual Job Tryout (VJT):** Simulation-based psychometric exercises designed to predict job performance and culture fit.",
+                    "* **Hireko.ai Conversational Approach:** Evaluates candidate competency, technical depth, and problem-solving through live spoken dialogue rather than abstract games.",
+                    "* **Fairness & Relevancy:** Candidates often prefer realistic role-related conversational interviews over game-like scoring puzzles.",
+                    "\n**Summary Takeaway:** HireVue and Modern Hire offer gamified cognitive tests; Hireko evaluates real-world problem-solving and communication through conversational AI."
+                ].join("\n"),
+                sources: getSourcesForPlatforms(["HireVue", "Hireko.ai"])
+            };
+        }
+
+        // Technical Coding & Assessments
+        if (/(technical coding|coding interview|coding assessment|code editor|ide|programming|developer assessment|test suite|code challenge)/i.test(qLower)) {
+            if (activePlatform === "Coderbyte") {
+                return {
+                    answer: [
+                        "**Coderbyte** provides affordable technical assessments and live coding interviews with unlimited testing:\n",
+                        "* **3,000+ Coding Challenges:** Library covering algorithms, data structures, full-stack, DevOps, and front-end frameworks.",
+                        "* **Multi-Language Cloud IDE:** In-browser coding environment supporting 30+ programming languages with automated test suites.",
+                        "* **Live Technical Interviews:** Collaborative code editor with live video and audio calling for paired programming.",
+                        "* **Transparent Flat Pricing:** Unlimited candidate assessments for $199/month, avoiding expensive per-test charges.",
+                        "\n**Summary Takeaway:** Coderbyte is an affordable, high-value benchmark for technical coding challenges and live IDE interviews."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Coderbyte"])
+                };
+            }
+            if (activePlatform === "CodeSignal") {
+                return {
+                    answer: [
+                        "**CodeSignal** is the enterprise benchmark for standardized developer assessments and technical coding sandboxes:\n",
+                        "* **Advanced Multi-Language IDE:** Feature-rich in-browser development environment with syntax highlighting, debugger, and unit tests.",
+                        "* **General Coding Score (GCS):** Standardized technical benchmark score used by leading technology enterprises.",
+                        "* **Cosmo AI Assistant:** Generates contextual hints and automated code efficiency analysis during assessments.",
+                        "* **Live Collaborative Coding:** Real-time paired programming environment with integrated video call.",
+                        "\n**Summary Takeaway:** CodeSignal is the leading platform for deep technical IDE coding challenges and developer skill certification."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["CodeSignal"])
+                };
+            }
+            return {
+                answer: [
+                    "For technical coding assessments, **CodeSignal** and **Coderbyte** provide live IDE environments; **Hireko.ai** specializes in conversational technical screening:\n",
+                    "* **CodeSignal & Coderbyte:** Feature full cloud IDEs, syntax highlighting, unit test suites, and multi-language support (Java, Python, C++, etc.).",
+                    "* **Hireko.ai Conversational Tech Screening:** Evaluates system architecture, engineering trade-offs, debugging reasoning, and technical communication through live spoken dialogue.",
+                    "* **Complementary Workflow:** Many engineering teams use CodeSignal or Coderbyte for initial code syntax tests, followed by Hireko for architectural and behavioral evaluation.",
+                    "\n**Summary Takeaway:** For deep algorithmic coding challenges, CodeSignal and Coderbyte lead the market; for conversational technical reasoning and architectural screening, Hireko provides the best unified experience."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // ATS & Workflow Integrations
+        if (/(ats|integrat|greenhouse|workday|lever|bamboohr|webhook|sync|hiring os)/i.test(qLower)) {
+            if (activePlatform === "Greenhouse") {
+                return {
+                    answer: [
+                        "**Greenhouse** is an industry-leading Applicant Tracking System (ATS); **Hireko.ai** integrates with Greenhouse to automate interview workflows:\n",
+                        "* **Greenhouse Core Role:** Acts as the central recruitment operating system managing job requisitions, candidate pipelines, and compliance.",
+                        "* **Hireko Integration:** Automatically triggers conversational AI interviews when a candidate reaches the designated stage in Greenhouse.",
+                        "* **Scorecard Sync:** Autograded competency scorecards, transcript highlights, and interview recordings push directly back into candidate records in Greenhouse.",
+                        "* **Single Dashboard:** Recruiters review AI interview results and progress candidates without leaving their Greenhouse workflow.",
+                        "\n**Summary Takeaway:** Greenhouse manages your recruitment pipeline, while Hireko powers intelligent conversational AI screening within that pipeline."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Greenhouse"])
+                };
+            }
+            return {
+                answer: [
+                    "**Hireko.ai** connects seamlessly into existing recruitment stacks through bi-directional ATS integrations and flexible webhooks:\n",
+                    "* **Supported ATS Platforms:** Standard integrations include **Greenhouse**, **Workday**, **Lever**, and **BambooHR**.",
+                    "* **Automated Stage Sync:** Candidates moving to the interview stage in your ATS automatically receive Hireko interview invitations.",
+                    "* **Scorecard Delivery:** Autograded candidate scorecards, transcript highlights, and competency ratings push directly into candidate records in your ATS.",
+                    "* **Webhooks & REST APIs:** Flexible webhooks support custom recruitment stacks and automated hiring notifications.",
+                    "* **Recruiter Convenience:** Hiring teams review AI interview results directly inside their existing ATS without switching tools.",
+                    "\n**Summary Takeaway:** Hireko seamlessly connects with your existing recruitment stack, keeping your ATS as the single source of truth."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Conversational Chatbots & Automated Scheduling
+        if (/(chatbot|scheduling|schedule|sms|whatsapp|frontline|olivia|candidate engagement)/i.test(qLower)) {
+            if (activePlatform === "Paradox") {
+                return {
+                    answer: [
+                        "**Paradox (Olivia)** is a conversational recruiting chatbot specializing in frontline mobile engagement and scheduling:\n",
+                        "* **Olivia AI Assistant:** Engages candidates 24/7 across SMS, WhatsApp, and career sites with conversational text chat.",
+                        "* **Automated Calendar Scheduling:** Syncs with recruiter calendars to schedule interviews automatically in under 3 minutes.",
+                        "* **High-Volume Frontline Hiring:** Optimized for retail, healthcare, hospitality, and hourly workforce recruiting.",
+                        "* **No Native Video Interviewing:** Paradox relies on external video tools (Zoom, Teams) rather than conducting video interviews itself.",
+                        "\n**Summary Takeaway:** Paradox excels at 24/7 mobile conversational scheduling, while Hireko conducts autonomous video interviews and competency evaluations."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Paradox"])
+                };
+            }
+            if (activePlatform === "Humanly") {
+                return {
+                    answer: [
+                        "**Humanly** provides conversational chat screening and post-interview candidate feedback automation:\n",
+                        "* **Conversational Pre-Screening:** Web chat widget that screens candidate qualifications and answers FAQ before applying.",
+                        "* **Interview Intelligence Notes:** Summarizes interview key points and tracks recruiter sentiment.",
+                        "* **Candidate Experience Surveys:** Automated post-interview surveys to measure candidate satisfaction.",
+                        "* **Lightweight Implementation:** Fast setup tailored for mid-market recruiting teams.",
+                        "\n**Summary Takeaway:** Humanly automates pre-screen chat and post-interview surveys, while Hireko conducts full two-way conversational video interviews."
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms(["Humanly"])
+                };
+            }
+            return {
+                answer: [
+                    "**Paradox (Olivia)** and **Humanly** focus on conversational chat screening and automated scheduling; **Hireko.ai** conducts complete video interviews:\n",
+                    "* **Paradox (Olivia):** Excels in frontline retail/hospitality hiring via automated 24/7 SMS, WhatsApp, and career site chat scheduling.",
+                    "* **Humanly:** Specializes in pre-screen chat widgets and post-interview candidate feedback surveys.",
+                    "* **Hireko.ai:** Steps in at the interview stage, conducting interactive two-way video/voice conversations with automated ~2-minute autograding.",
+                    "\n**Summary Takeaway:** Paradox and Humanly automate candidate engagement and scheduling; Hireko automates the substantive interview and candidate evaluation."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Meeting Notes & Interview Intelligence
+        if (/(interview intelligence|note-taking|notes|transcription|meeting intelligence|zoom bot|teams bot|call summary)/i.test(qLower)) {
+            return {
+                answer: [
+                    "**Metaview** provides automated interview notes for human-led interviews; **Hireko.ai** conducts autonomous AI interviews:\n",
+                    "* **Metaview AI Note-Taking:** Joins Zoom, Meet, and Teams calls as an AI bot, capturing transcripts and generating bulleted recruiter notes.",
+                    "* **Recruiter Productivity:** Eliminates manual note-taking so human interviewers can focus entirely on candidate engagement.",
+                    "* **Hireko.ai Autonomous Interviewer:** Actually conducts the interview directly with the candidate, asking adaptive questions and autograding competencies in ~2 minutes.",
+                    "* **Key Distinction:** Metaview assists human interviewers; Hireko conducts the interview autonomously to save recruiter time end-to-end.",
+                    "\n**Summary Takeaway:** Metaview supercharges human interviewers with automated notes, whereas Hireko conducts autonomous conversational AI interviews."
+                ].join("\n"),
+                sources: getSourcesForPlatforms(["Metaview"])
+            };
+        }
+
+        // Sourcing & Marketplaces (Mercor)
+        if (activePlatform === "Mercor" || qLower.includes("mercor") || /(talent matching|sourcing marketplace|pre-vetted talent)/i.test(qLower)) {
+            return {
+                answer: [
+                    "**Mercor** is an AI-powered talent marketplace that sources, screens, and matches pre-vetted candidates:\n",
+                    "* **AI Talent Matching:** Algorithmic matching pairing candidate resume data and automated video interviews with employer job descriptions.",
+                    "* **Pre-Vetted Talent Pool:** Focuses on connecting companies with pre-screened software engineers and knowledge workers.",
+                    "* **Marketplace Pricing:** Free browsing with a 15%–30% fee on hired talent.",
+                    "* **Different from Hireko:** Mercor is a talent agency/marketplace; Hireko is an interviewing software platform for your own candidate pipeline.",
+                    "\n**Summary Takeaway:** Mercor provides a pre-vetted talent marketplace, whereas Hireko provides autonomous AI interviewing software for your hiring process."
+                ].join("\n"),
+                sources: getSourcesForPlatforms(["Mercor"])
+            };
+        }
+
+        // Candidate Experience, Practice Sandbox & Mobile Access
+        if (/(candidate experience|practice|sandbox|mobile|app download|anxiety|candidate feedback|device check)/i.test(qLower)) {
+            return {
+                answer: [
+                    "**Hireko.ai** is designed for high candidate satisfaction with zero app downloads, mobile compatibility, and a 2-minute unrecorded practice lobby:\n",
+                    "* **Zero App Download:** Candidates participate directly from their web browser on any mobile device (iOS, Android), laptop, or desktop.",
+                    "* **Candidate Practice Lobby:** An unrecorded 2-minute warm-up question lets candidates test their microphone, camera, and get comfortable before the real interview.",
+                    "* **Adaptive Conversational AI:** The AI speaks naturally with low latency, providing an engaging conversation rather than a cold one-way recording.",
+                    "* **Candidate Drop-Off Reduction:** Transparent instructions and device checks reduce candidate drop-off to under 3%.",
+                    "* **Accessible Design:** Clear interface with forgiving retry options for practice questions and high-contrast prompts.",
+                    "\n**Summary Takeaway:** Hireko creates a modern, candidate-friendly interview experience that strengthens employer brand and minimizes candidate anxiety."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Compliance, Privacy, GDPR & AI Bias
+        if (/(gdpr|privacy|bias|compliance|adverse impact|eeoc|local law 144|audit|security|consent)/i.test(qLower)) {
+            return {
+                answer: [
+                    "**Hireko.ai** adheres to global data privacy standards and AI hiring regulations, emphasizing fairness, human oversight, and transparent scoring:\n",
+                    "* **Human-in-the-Loop:** AI scorecards serve strictly as decision support; final hiring choices remain with human recruiters and hiring managers.",
+                    "* **GDPR & Privacy Compliance:** Candidate video, audio, and personal data are encrypted in transit and at rest with explicit consent collection.",
+                    "* **Objective Rubrics:** Candidates are evaluated against standardized competency rubrics to reduce unconscious bias.",
+                    "* **Zero Facial Emotion Scoring:** Complies with emerging AI regulations (such as NYC Local Law 144) by focusing strictly on job-relevant speech and reasoning.",
+                    "* **Audit-Ready Records:** Standardized evaluation records and transcript citations provide verifiable candidate defense.",
+                    "\n**Summary Takeaway:** Hireko provides transparent, auditable AI evaluation that meets enterprise compliance and privacy standards."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Demo, Pilot, Trial & Onboarding
+        if (/(demo|pilot|trial|get started|book a demo|how to start|onboarding)/i.test(qLower)) {
+            return {
+                answer: [
+                    "You can easily experience **Hireko.ai** through an interactive product demo and launch a pilot program on active job requisitions:\n",
+                    "* **Interactive Product Demo:** Experience the conversational AI interviewer firsthand as both candidate and recruiter.",
+                    "* **Guided Pilot Program:** Evaluate Hireko on real hiring pipelines to assess candidate completion rates, autograding quality, and recruiter time savings.",
+                    "* **Rapid Setup:** Launch your first interview campaign within hours without complex multi-week implementations.",
+                    "* **No Multi-Year Lock-In:** Flexible trial and SaaS terms allow teams to test AI interviewing before making long-term commitments.",
+                    "* **How to Connect:** Visit [Hireko.ai](https://hireko.ai) or submit a demo request to schedule a live walkthrough with the product team.",
+                    "\n**Summary Takeaway:** Hireko provides immediate setup and low-risk pilot evaluations to help recruitment teams modernize candidate screening fast."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Pros & Cons / Strengths & Weaknesses
+        if (/(pros and cons|pros & cons|strengths|weaknesses|trade-offs|advantages|disadvantages|benefits)/i.test(qLower)) {
+            const prof = COMPETITOR_PROFILES[activePlatform];
+            if (prof && activePlatform !== "Hireko.ai") {
+                return {
+                    answer: [
+                        `Here are the core strengths, trade-offs, and considerations for **${activePlatform}**:\n`,
+                        `* **Core Purpose:** ${prof.core_purpose}.`,
+                        `* **Key Strengths:** ${prof.key_features}.`,
+                        `* **AI Capabilities:** ${prof.ai_capabilities}.`,
+                        `* **Best For:** ${prof.best_for}.`,
+                        `* **Trade-Offs & Limitations:** ${prof.limitations}.`,
+                        `* **Pricing Context:** ${prof.pricing}.`,
+                        `\n**Summary Takeaway:** ${prof.single_takeaway || prof.takeaway || ""}`
+                    ].join("\n"),
+                    sources: getSourcesForPlatforms([activePlatform])
+                };
+            }
+            return {
+                answer: [
+                    "**Hireko.ai** provides autonomous two-way conversational AI interviewing with instant autograding, balanced by a growing integrations catalog:\n",
+                    "* **Strength — Two-Way Conversational AI:** Interactive spoken dialogue with real-time adaptive follow-ups replaces static one-way video.",
+                    "* **Strength — 2-Minute Autograding:** Comprehensive competency scorecards and transcript citations delivered immediately after interview completion.",
+                    "* **Strength — Accessible SaaS Pricing:** Transparent subscription tiers without burdensome multi-year enterprise contract commitments.",
+                    "* **Strength — Candidate Experience:** 2-minute unrecorded practice lobby and zero app downloads across mobile and desktop.",
+                    "* **Consideration — Brand Maturity:** Newer market entrant compared to legacy providers like HireVue and Talview.",
+                    "* **Consideration — Integrations Catalog:** Continuously expanding direct ATS integrations beyond core platforms like Greenhouse and Workday.",
+                    "\n**Summary Takeaway:** Hireko is ideal for fast-growing and agile teams seeking interactive, automated conversational AI interviews at accessible pricing."
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Advisor Capabilities & "What Can You Do?"
+        if (/(what can you do|how can you help|who are you|what do you do|help me|capabilities|what platforms do you cover)/i.test(qLower)) {
+            return {
+                answer: [
+                    "I am your **Hireko.ai Product Advisor**, an evidence-driven AI assistant specializing in recruitment technology and competitor evaluations:\n",
+                    "* **Hireko.ai Deep Dives:** Explain conversational AI video interviewing, 2-minute autograding, scoring rubrics, proctoring, and ATS sync.",
+                    "* **15 Competitor Comparisons:** Generate side-by-side comparison tables across HireVue, Talview, Willo, Spark Hire, CodeSignal, Metaview, Paradox, and more.",
+                    "* **Verified Platform Pricing:** Compare transparent SaaS tiers with quote-based enterprise models and credential requirements.",
+                    "* **Feature Benchmarks:** Compare live video rooms, one-way recorded video, cloud coding IDEs, and meeting intelligence bots.",
+                    "* **Product Roadmap Insights:** Review prioritized product enhancements and best practices for hiring fairness.",
+                    "\n**Summary Takeaway:** Ask me anything about Hireko.ai or ask to compare specific platforms (e.g., 'HireVue vs Hireko', 'what is the pricing for Willo', or 'does Talview have live rooms')!"
+                ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Specific Competitor Profiles
+        if (activePlatform === "Recruit41" || qLower.includes("recruit41")) {
+            return {
+                answer: [
+                    "**Recruit41** provides AI-powered candidate screening and recruiter dashboards:\n",
+                    "* **Automated Screening:** Video interview screening with automated transcript analysis and competency scoring.",
+                    "* **Recruiter Dashboards:** Centralized portal for reviewing candidate submissions and sharing evaluations with hiring managers.",
+                    "* **Custom Pricing:** Quote-based pricing tailored to hiring volume.",
+                    "\n**Summary Takeaway:** Recruit41 focuses on video screening workflows, while Hireko provides real-time, two-way conversational AI interviews."
+                ].join("\n"),
+                sources: getSourcesForPlatforms(["Recruit41"])
+            };
+        }
+        if (activePlatform === "myInterview" || qLower.includes("myinterview")) {
+            return {
+                answer: [
+                    "**myInterview** specializes in mobile-friendly asynchronous video screening for high-volume customer-facing roles:\n",
+                    "* **Asynchronous Video Screening:** One-way recorded video responses optimized for retail, hospitality, and service industries.",
+                    "* **Mobile Candidate Experience:** Clean, responsive mobile interface allowing candidates to complete screening on smartphones.",
+                    "* **Recruiter Collaboration:** Timestamped scorecards and shareable candidate review links for hiring teams.",
+                    "* **Pricing Tiers:** Free starter tier available; tiered plans from $59–$99+/month.",
+                    "\n**Summary Takeaway:** myInterview excels at mobile-first high-volume recorded video screening, while Hireko conducts autonomous conversational AI interviews."
+                ].join("\n"),
+                sources: getSourcesForPlatforms(["myInterview"])
+            };
+        }
+        if (activePlatform === "Interviewer.AI" || qLower.includes("interviewer.ai")) {
+            return {
+                answer: [
+                    "**Interviewer.AI** is a pre-screening video interviewing platform with automated resume scoring:\n",
+                    "* **Pre-Screening Workflow:** Combines resume parsing, workstyle assessments, and asynchronous video responses.",
+                    "* **Workstyle & Skill Scoring:** AI evaluates candidate responses and ranks applicants for recruiter review.",
+                    "* **SaaS Subscription:** Subscription plans starting from $99 to $249+/month.",
+                    "\n**Summary Takeaway:** Interviewer.AI combines resume ranking with asynchronous video scoring, while Hireko provides live conversational AI video interviews."
+                ].join("\n"),
+                sources: getSourcesForPlatforms(["Interviewer.AI"])
+            };
+        }
+
+        // 6. MULTIPLE PLATFORMS MENTIONED WITHOUT EXPLICIT COMPARISON KEYWORD (e.g. "HireVue and Metaview")
         if (platforms.length >= 2) {
             return {
                 answer: buildMultiPlatformComparisonTable(platforms),
@@ -1305,7 +1847,7 @@
             };
         }
 
-        // 6. SINGLE PLATFORM QUESTION (Rule 4: structured bullets, answer ONLY about that platform)
+        // 7. SINGLE PLATFORM QUESTION (Rule 4: structured bullets, answer ONLY about that platform)
         if (platforms.length === 1) {
             return {
                 answer: buildSinglePlatformOverview(platforms[0]),
@@ -1313,7 +1855,7 @@
             };
         }
 
-        // 7. GENERAL HIREKO PLATFORM SUMMARY
+        // 8. GENERAL HIREKO PLATFORM SUMMARY (Default fallback)
         const hk = HIREKO_PROFILE;
         const generalAnswer = [
             "**Hireko.ai** is an autonomous two-way conversational AI interviewing platform for modern recruitment teams:\n",
@@ -1328,7 +1870,7 @@
 
         return {
             answer: generalAnswer,
-            sources: []
+            sources: ["https://hireko.ai"]
         };
     }
 
@@ -1457,7 +1999,7 @@
             };
         }
 
-        const payload = JSON.stringify({ query: query, sessionId: sessionId });
+        const payload = JSON.stringify({ query: query, sessionId: sessionId, history: conversationHistory });
         const endpointsToTry = [];
 
         // 1. If running under http/https, try relative /api/chat
@@ -1496,7 +2038,7 @@
         }
 
         // Seamless client-side knowledge evaluation fallback
-        return evaluateAdvisorClientSide(query);
+        return evaluateAdvisorClientSide(query, conversationHistory);
     }
 
     async function handleSend(e) {
@@ -1506,6 +2048,11 @@
         if (!query) return false;
 
         appendMessage("user", query);
+        conversationHistory.push({ role: "user", content: query });
+        if (conversationHistory.length > 20) {
+            conversationHistory = conversationHistory.slice(-20);
+        }
+
         if (userInput) userInput.value = "";
         if (sendBtn) sendBtn.disabled = true;
         appendTypingIndicator();
@@ -1513,11 +2060,13 @@
         try {
             const data = await sendQueryWithFallback(query);
             removeTypingIndicator();
+            conversationHistory.push({ role: "assistant", content: data.answer });
             appendMessage("assistant", data.answer, data.sources || []);
         } catch (err) {
             // Even if an unexpected error occurs, gracefully answer using local engine
             removeTypingIndicator();
-            const fallbackData = evaluateAdvisorClientSide(query);
+            const fallbackData = evaluateAdvisorClientSide(query, conversationHistory);
+            conversationHistory.push({ role: "assistant", content: fallbackData.answer });
             appendMessage("assistant", fallbackData.answer, fallbackData.sources || []);
         } finally {
             if (sendBtn) sendBtn.disabled = false;
@@ -1531,9 +2080,12 @@
         handleSend();
     }
 
-    function resetConversation() {
+    function resetConversation(e) {
+        if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+        if (e && typeof e.preventDefault === "function") e.preventDefault();
         sessionId = "sess_" + Math.random().toString(36).substring(2, 11) + "_" + Date.now();
         sessionStorage.setItem(SESSION_KEY, sessionId);
+        conversationHistory = [];
         messagesContainer.innerHTML = `
             <div class="message assistant">
                 <div class="msg-bubble">
@@ -1541,6 +2093,88 @@
                 </div>
             </div>`;
     }
+
+    function toggleMinimize(e) {
+        if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+        if (e && typeof e.preventDefault === "function") e.preventDefault();
+        if (!chatWidgetContainer) return;
+
+        if (isMaximized) {
+            toggleMaximize();
+        }
+
+        isMinimized = !isMinimized;
+        if (isMinimized) {
+            chatWidgetContainer.classList.add("minimized");
+            if (minimizeBtn) {
+                minimizeBtn.title = "Restore chat";
+                minimizeBtn.setAttribute("aria-label", "Restore chat");
+            }
+            if (minimizeIcon) {
+                minimizeIcon.innerHTML = '<path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>';
+            }
+        } else {
+            chatWidgetContainer.classList.remove("minimized");
+            if (minimizeBtn) {
+                minimizeBtn.title = "Minimize chat";
+                minimizeBtn.setAttribute("aria-label", "Minimize chat");
+            }
+            if (minimizeIcon) {
+                minimizeIcon.innerHTML = '<path d="M19 13H5v-2h14v2z"/>';
+            }
+            if (userInput) userInput.focus();
+        }
+    }
+
+    function toggleMaximize(e) {
+        if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+        if (e && typeof e.preventDefault === "function") e.preventDefault();
+        if (!chatWidgetContainer) return;
+
+        if (isMinimized) {
+            toggleMinimize();
+        }
+
+        isMaximized = !isMaximized;
+        if (isMaximized) {
+            chatWidgetContainer.classList.add("maximized");
+            document.body.style.overflow = "hidden";
+            if (maximizeBtn) {
+                maximizeBtn.title = "Exit full screen";
+                maximizeBtn.setAttribute("aria-label", "Exit full screen");
+            }
+            if (maximizeIcon) {
+                maximizeIcon.innerHTML = '<path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>';
+            }
+        } else {
+            chatWidgetContainer.classList.remove("maximized");
+            document.body.style.overflow = "";
+            if (maximizeBtn) {
+                maximizeBtn.title = "Maximize chat";
+                maximizeBtn.setAttribute("aria-label", "Maximize chat");
+            }
+            if (maximizeIcon) {
+                maximizeIcon.innerHTML = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+            }
+        }
+    }
+
+    function handleHeaderClick(e) {
+        if (isMinimized) {
+            if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+            toggleMinimize();
+        }
+    }
+
+    window.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") {
+            if (isMaximized) {
+                toggleMaximize();
+            } else if (isMinimized) {
+                toggleMinimize();
+            }
+        }
+    });
 
     // Attach explicit event listeners to prevent any possibility of page refresh
     const chatForm = document.getElementById("chatForm");
