@@ -299,40 +299,9 @@
             margin-bottom: 0;
         }
 
-        /* Sources */
-        .sources-wrapper {
-            margin-top: 8px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            align-items: center;
-        }
-
-        .sources-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-right: 4px;
-        }
-
-        .source-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: #E0F2FE;
-            color: #0369A1;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1px solid #BAE6FD;
-            transition: all 0.2s;
-        }
-
-        .source-pill:hover {
-            background: #BAE6FD;
-            color: #075985;
+        /* Sources - Hidden per user request */
+        .sources-wrapper, .sources-label, .source-pill {
+            display: none !important;
         }
 
         /* Starter Chips */
@@ -1947,22 +1916,7 @@
         bubble.innerHTML = formatMarkdown(content);
         msgDiv.appendChild(bubble);
 
-        if (sources && sources.length > 0) {
-            const sourcesDiv = document.createElement("div");
-            sourcesDiv.className = "sources-wrapper";
-            sourcesDiv.innerHTML = '<span class="sources-label">Verified Sources:</span>';
-            sources.forEach(url => {
-                const a = document.createElement("a");
-                a.className = "source-pill";
-                a.href = url;
-                a.target = "_blank";
-                a.rel = "noopener noreferrer";
-                const slugPart = url.split("/").pop() || "source";
-                a.textContent = slugPart.replace("-vs-hireko", " Comparison");
-                sourcesDiv.appendChild(a);
-            });
-            msgDiv.appendChild(sourcesDiv);
-        }
+
 
         messagesContainer.appendChild(msgDiv);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
