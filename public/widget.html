@@ -992,34 +992,109 @@
 
     const ALL_PLATFORM_PRICING = { "Hireko.ai": HIREKO_PRICING_DATA, ...COMPETITOR_PRICING_DATA };
 
+    const COMMON_DOMAIN_WORDS = new Set([
+        "interview", "interviews", "interviewing", "interviewer", "recruiter", "recruiters",
+        "recruiting", "recruit", "review", "reviews", "screening", "assessment", "video",
+        "videos", "pricing", "price", "cost", "costs", "feature", "features", "platform", "platforms",
+        "tool", "tools", "code", "coding", "test", "tests", "room", "rooms"
+    ]);
+
+    function levenshteinDistance(s1, s2) {
+        if (s1.length < s2.length) return levenshteinDistance(s2, s1);
+        if (s2.length === 0) return s1.length;
+        let prev = [];
+        for (let j = 0; j <= s2.length; j++) prev[j] = j;
+        for (let i = 0; i < s1.length; i++) {
+            const curr = [i + 1];
+            for (let j = 0; j < s2.length; j++) {
+                const cost = s1[i] === s2[j] ? 0 : 1;
+                curr[j + 1] = Math.min(curr[j] + 1, prev[j + 1] + 1, prev[j] + cost);
+            }
+            prev = curr;
+        }
+        return prev[s2.length];
+    }
+
+    const TYPO_TARGETS = {
+        "talview": "Talview",
+        "hirevue": "HireVue",
+        "hireview": "HireVue",
+        "willo": "Willo",
+        "codesignal": "CodeSignal",
+        "coderbyte": "Coderbyte",
+        "paradox": "Paradox",
+        "humanly": "Humanly",
+        "metaview": "Metaview",
+        "mercor": "Mercor",
+        "greenhouse": "Greenhouse",
+        "hireko": "Hireko.ai",
+        "myinterview": "myInterview",
+        "sparkhire": "Spark Hire",
+        "modernhire": "Modern Hire",
+        "recruit41": "Recruit41",
+        "interviewerai": "Interviewer.AI"
+    };
+
     const PLATFORM_ALIASES = [
-        [/\bhireko(\.ai)?\b/i, "Hireko.ai"],
-        [/\bhirevue\b/i, "HireVue"],
-        [/\btalview\b/i, "Talview"],
-        [/\bmodern\s*hire\b/i, "Modern Hire"],
-        [/\bspark\s*hire\b/i, "Spark Hire"],
-        [/\bmyinterview\b/i, "myInterview"],
-        [/\bwillo\b/i, "Willo"],
-        [/\bcode\s*signal\b/i, "CodeSignal"],
-        [/\bcoder\s*byte\b/i, "Coderbyte"],
-        [/\bparadox\b/i, "Paradox"],
-        [/\bhumanly\b/i, "Humanly"],
-        [/\binterviewer(\.|\s*)ai\b/i, "Interviewer.AI"],
-        [/\bmetaview\b/i, "Metaview"],
-        [/\bmercor\b/i, "Mercor"],
-        [/\bgreenhouse\b/i, "Greenhouse"],
-        [/\brecruit\s*41\b/i, "Recruit41"]
+        [/\b(hireko(\.ai)?|hirko|hirekoo|hireco|hierko)\b/i, "Hireko.ai"],
+        [/\b(hirevue|hireview|hirevew|hairvue|hairview|hirvue|hireveu)\b/i, "HireVue"],
+        [/\b(talview|telview|tallview|talvew|talveiw|tel\s*view|tal\s*view)\b/i, "Talview"],
+        [/\b(modern\s*hire|modren\s*hire|modernhire|modrenhire)\b/i, "Modern Hire"],
+        [/\b(spark\s*hire|sparkhire|sprakhire|sparkhir|sparkhyre)\b/i, "Spark Hire"],
+        [/\b(myinterview|my\s*interview|myinteview|myintervew|myinterveiw)\b/i, "myInterview"],
+        [/\b(willo|wilo|willow|willoo)\b/i, "Willo"],
+        [/\b(code\s*signal|codesignal|codsignal|codesignl)\b/i, "CodeSignal"],
+        [/\b(coder\s*byte|coderbyte|codebyte|coderbyt)\b/i, "Coderbyte"],
+        [/\b(paradox|parodox|paradoxx|parado)\b/i, "Paradox"],
+        [/\b(humanly|humanley|humanlyy|humaly)\b/i, "Humanly"],
+        [/\b(interviewer(\.|\s*)ai|interview\s*ai|interviewai)\b/i, "Interviewer.AI"],
+        [/\b(metaview|mataview|metavew|metavieww|meta\s*view)\b/i, "Metaview"],
+        [/\b(mercor|mercur|mercore)\b/i, "Mercor"],
+        [/\b(greenhouse|green\s*house|grenhouse|grennhouse)\b/i, "Greenhouse"],
+        [/\b(recruit\s*41|recrut41|recruite41|recruit41)\b/i, "Recruit41"]
     ];
 
     function identifyAllMentionedPlatforms(text) {
         const str = text || "";
         const matches = [];
+        const matchedRanges = [];
+
+        // 1. Regex scanning for known aliases and common typo variations
         for (const [regex, canonical] of PLATFORM_ALIASES) {
-            const m = str.match(regex);
-            if (m && typeof m.index === "number") {
+            let m;
+            const globalRegex = new RegExp(regex.source, "gi");
+            while ((m = globalRegex.exec(str)) !== null) {
                 matches.push({ index: m.index, name: canonical });
+                matchedRanges.push({ start: m.index, end: m.index + m[0].length });
             }
         }
+
+        // 2. Fuzzy Levenshtein token scanning for uncovered words
+        const wordRegex = /\b[a-z0-9_.]+\b/gi;
+        let wm;
+        while ((wm = wordRegex.exec(str)) !== null) {
+            const w = wm[0].toLowerCase();
+            const wStart = wm.index;
+            const wEnd = wStart + w.length;
+            const alreadyCovered = matchedRanges.some(r => wStart >= r.start && wEnd <= r.end);
+            if (alreadyCovered || COMMON_DOMAIN_WORDS.has(w)) continue;
+
+            let bestCanonical = null;
+            let minD = 999;
+            for (const [target, canonical] of Object.entries(TYPO_TARGETS)) {
+                if (Math.abs(w.length - target.length) > 2) continue;
+                const maxD = target.length <= 6 ? 1 : 2;
+                const d = levenshteinDistance(w, target);
+                if (d <= maxD && d < minD) {
+                    minD = d;
+                    bestCanonical = canonical;
+                }
+            }
+            if (bestCanonical) {
+                matches.push({ index: wStart, name: bestCanonical });
+            }
+        }
+
         matches.sort((a, b) => a.index - b.index);
         const seen = new Set();
         const result = [];
