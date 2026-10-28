@@ -1269,6 +1269,138 @@
         return lines.join("\n");
     }
 
+    const PLATFORM_FEATURE_BULLETS = {
+        "Hireko.ai": [
+            "**Autonomous Two-Way Conversational AI:** Live interactive voice/video interviews with real-time speech dialogue and adaptive follow-up questioning.",
+            "**Rapid ~2-Minute Autograding:** Automated competency scorecards substantiated by timestamped transcript citations and confidence ratings.",
+            "**Frictionless Candidate Sandbox:** 100% browser-based with an unrecorded 2-minute practice lobby (<3% drop-off, zero app downloads).",
+            "**Turnkey ATS Integration:** Bi-directional scorecard synchronization with Greenhouse, Workday, Lever, and modern REST APIs.",
+            "**Fairness & Anti-Bias Framework:** Standardized rubric scoring focusing strictly on spoken technical/behavioral reasoning (zero facial emotion analysis)."
+        ],
+        "Talview": [
+            "**Dedicated Live Interview Rooms:** Real-time multi-party video conferencing with integrated collaborative code editor.",
+            "**Alvy AI & Live Proctoring:** Automated behavioral anomaly tracking, dual-camera monitoring, and certified live human proctor oversight.",
+            "**Secure Browser Lockdown:** Enforces exam integrity by preventing tab switching, dual monitors, copy-pasting, and screen recording.",
+            "**Asynchronous Video Screening:** On-demand recorded candidate video submissions for university campus drives and mass hiring."
+        ],
+        "CodeSignal": [
+            "**Multi-Language Cloud IDE:** Advanced in-browser development environment supporting 40+ programming languages with automated unit test runners.",
+            "**Certified Coding Scores (300–850):** Standardized, objective benchmark scores widely recognized across top tech employers.",
+            "**Cosmo AI Assistant:** Real-time contextual coding hints, code efficiency evaluations, and algorithmic feedback.",
+            "**Live Collaborative Paired Coding:** Real-time synchronized coding editor with built-in audio and video calling."
+        ],
+        "HireVue": [
+            "**Asynchronous One-Way Video Screening:** Structured candidate video recordings evaluated via Automated Interview Scoring (AIS).",
+            "**Pre-Hire Gamified Psychometrics:** Cognitive mini-games measuring problem-solving, cognitive agility, and working memory.",
+            "**Enterprise Live Video Rooms:** Multi-party live interviewing rooms for executive and panel interviews.",
+            "**Legacy ERP Integrations:** Deep pre-built connectors for SAP SuccessFactors, Oracle Taleo, and Workday."
+        ],
+        "Willo": [
+            "**Frictionless Asynchronous Video Screening:** One-way video, audio, or text response submissions on any device.",
+            "**Zero App Downloads or Logins:** Candidates answer prompts directly in any mobile or desktop web browser without creating accounts.",
+            "**Candidate Showcase Reels:** Easily curate and share candidate video reels with hiring managers.",
+            "**Transparent Entry Pricing:** Accessible self-serve subscription plans starting at $43/month."
+        ],
+        "Coderbyte": [
+            "**3,000+ Technical Challenges:** Expansive library covering full-stack, algorithms, DevOps, and front-end frameworks.",
+            "**Multi-Language Cloud IDE:** In-browser coding sandbox with automated test suites and unit test execution.",
+            "**Live Paired Programming:** Collaborative code editor with integrated video and audio calling.",
+            "**Transparent Flat Pricing:** Unlimited candidate assessments for $199/month."
+        ],
+        "Metaview": [
+            "**Silent AI Bot Integration:** Connects seamlessly into Zoom, Google Meet, and Microsoft Teams calls.",
+            "**Automated Structured Recruiter Notes:** Captures transcripts and extracts structured bullet points by competency.",
+            "**Recruiter Productivity Lift:** Saves hiring teams 15–20 minutes of manual documentation per interview."
+        ],
+        "Paradox": [
+            "**Olivia Conversational AI:** Automated conversational assistant engaging candidates 24/7 over SMS, WhatsApp, and web chat.",
+            "**Automated Calendar Scheduling:** Automatically coordinates interviewer calendars to book interviews in under 2 minutes.",
+            "**High-Volume Frontline Focus:** Optimized for high-turnover retail, hospitality, healthcare, and franchise hiring."
+        ],
+        "Humanly": [
+            "**Conversational Pre-Screening Widgets:** Automated website chat widgets that pre-qualify applicants before scheduling.",
+            "**Post-Interview Candidate Surveys:** Automated feedback surveys measuring candidate satisfaction and engagement.",
+            "**Recruiter Notes & Sentiment Tracking:** AI summaries tracking key candidate metrics and interviewer sentiment."
+        ],
+        "Spark Hire": [
+            "**One-Way Video Screening:** Candidates record answers to preset questions on their own schedule.",
+            "**Live Video Interviewing:** Built-in real-time video meetings for recruiter-led panel interviews.",
+            "**Hiring Manager Collaboration:** Timestamped comments and easy sharing of video responses with team members."
+        ],
+        "myInterview": [
+            "**Mobile-First Asynchronous Video:** Quick recorded video screening tailored for mobile applicants.",
+            "**Candidate Match Scoring:** Automated text and keyword matching to rank volume applicant submissions.",
+            "**Entry-Level & Volume Focus:** Designed for retail, hospitality, and customer service hiring."
+        ],
+        "Interviewer.AI": [
+            "**Resume Scoring & Shortlisting:** Automatically scores and ranks resumes before inviting candidates to video.",
+            "**Asynchronous Video Evaluation:** Analyzes soft skills, communication, and professionalism from recorded answers.",
+            "**Recruiter Dashboards:** Centralized portal for sharing candidate rankings with hiring managers."
+        ],
+        "Mercor": [
+            "**AI-Powered Global Talent Marketplace:** Algorithmic matching connecting companies with pre-vetted engineers.",
+            "**Automated Video Sourcing & Vetting:** Proprietary candidate evaluations matching developer profiles to job specs.",
+            "**Placement Marketplace Model:** Free candidate browsing with 15%–30% fee on hired talent."
+        ],
+        "Greenhouse": [
+            "**Central Applicant Tracking System (ATS):** Comprehensive recruitment operating system managing requisitions and candidate pipelines.",
+            "**Candidate Workflow Governance:** Structured hiring stages, interviewer scorecards, and compliance tracking.",
+            "**Extensive Integration Ecosystem:** Robust APIs and webhooks connecting with interviewing platforms like Hireko."
+        ],
+        "Modern Hire": [
+            "**Virtual Job Tryout (VJT):** Simulation-based psychometric exercises predicting job performance and culture fit.",
+            "**Enterprise Interviewing Suite:** On-demand and live video interviewing (now part of HireVue).",
+            "**I/O Psychology Foundations:** Rigorous assessment science for high-volume enterprise compliance."
+        ]
+    };
+
+    function buildFeaturesPointsResponse(platforms) {
+        const valid = platforms.filter(p => PLATFORM_FEATURE_BULLETS[p]);
+        if (!valid.length) valid.push("Hireko.ai");
+
+        if (valid.length === 1) {
+            const p = valid[0];
+            const bullets = PLATFORM_FEATURE_BULLETS[p];
+            const lines = [`Here are the core features and capabilities of **${p}**:\n`];
+            for (const b of bullets) {
+                lines.push(`* ${b}`);
+            }
+            lines.push(`\n**Summary Takeaway:** ${p} delivers specialized features designed for objective, streamlined hiring.`);
+            return lines.join("\n");
+        }
+
+        const names = valid.slice(0, -1).map(p => `**${p}**`).join(", ") + `, and **${valid[valid.length - 1]}**`;
+        const lines = [`Here is the breakdown of core features and capabilities across ${names}:\n`];
+        for (const p of valid) {
+            lines.push(`### ${p} Features`);
+            for (const b of PLATFORM_FEATURE_BULLETS[p]) {
+                lines.push(`* ${b}`);
+            }
+            lines.push("");
+        }
+        lines.push("**Summary Takeaway:** Each platform delivers distinct specializations—Hireko leads in conversational AI interviewing, Talview in proctored exam rooms, and CodeSignal in standardized cloud IDE assessments.");
+        return lines.join("\n").trim();
+    }
+
+    function buildSuggestedFeaturesForHireko() {
+        return [
+            "Here are the **Top 6 Recommended Features Suitable for Hireko.ai** to expand its market leadership and address competitive gaps:\n",
+            "* **1. Real-Time Candidate Feedback Reports (Post-Interview Growth Loop):**",
+            "  * Automatically generate constructive feedback reports highlighting candidate communication strengths, response clarity, and technical insights immediately post-interview. This creates viral candidate advocacy and drives interview completion rates above 97%.",
+            "* **2. Collaborative Live Coding & Architecture Whiteboard:**",
+            "  * Embed an interactive in-browser coding sandbox into the conversational AI session. This enables Hireko to assess algorithmic syntax alongside conversational architectural reasoning, directly challenging CodeSignal and Coderbyte.",
+            "* **3. Verifiable Compliance & Anti-Bias Audit Certificates:**",
+            "  * Generate timestamped, cryptographic compliance certificates showing rubric alignment and confirming zero facial analysis, providing ironclad NYC Local Law 144 and EEOC defensibility for enterprise buyers.",
+            "* **4. Deep Bi-Directional ATS Stage Synchronization:**",
+            "  * Automatically advance candidate workflow stages, trigger AI interview invitations, and write back structured scorecards directly into Greenhouse, Workday, and Lever candidate profiles.",
+            "* **5. Interactive Hiring Manager Showcase Reels:**",
+            "  * Allow recruiters to create and share 60-second highlight clips with timestamped notes directly into Slack or Microsoft Teams for rapid hiring manager alignment.",
+            "* **6. Flexible Multi-Format Submissions (Audio & Text Fallback):**",
+            "  * Accommodate candidates with low bandwidth or hardware constraints by offering audio-only or text response alternatives if video streaming drops.",
+            "\n**Summary Takeaway:** Prioritizing candidate feedback reports, live coding whiteboards, and bi-directional ATS sync gives Hireko an unassailable advantage over legacy one-way video platforms."
+        ].join("\n");
+    }
+
     function evaluateAdvisorClientSide(rawQuery, history = []) {
         const q = (rawQuery || "").trim();
         const qLower = q.toLowerCase();
@@ -1300,9 +1432,13 @@
 
         let platforms = identifyAllMentionedPlatforms(q);
 
-        // Resolve context from conversation history (Prioritize competitor over Hireko)
-        let competitors = platforms.filter(p => p !== "Hireko.ai");
-        if (!competitors.length && history && history.length) {
+        let localPlatforms = [...platforms];
+
+        // Only resolve competitor from history for explicit follow-up comparison/difference queries or when query has zero platforms
+        const isFollowupComparison = /(top 3 differences|top three differences|top differences|key differences|main differences|biggest differences|how is it different|what are the top 3 differences|which one is better|better for enterprise|which is better|learn from willo|learn from|what can hireko learn|what can it learn)/i.test(qLower);
+
+        let competitors = localPlatforms.filter(p => p !== "Hireko.ai");
+        if ((isFollowupComparison || !localPlatforms.length) && !competitors.length && history && history.length) {
             for (let i = history.length - 1; i >= 0; i--) {
                 const prev = history[i];
                 if (prev && prev.role === "user") {
@@ -1314,18 +1450,15 @@
                     }
                 }
             }
-        }
-        let activePlatform = null;
-        if (competitors.length) {
-            for (const c of competitors) {
-                if (!platforms.includes(c)) {
-                    platforms.unshift(c);
+            if (competitors.length) {
+                for (const c of competitors) {
+                    if (!localPlatforms.includes(c)) {
+                        localPlatforms.unshift(c);
+                    }
                 }
             }
-            activePlatform = competitors[0];
-        } else {
-            activePlatform = platforms[0] || "Hireko.ai";
         }
+        let activePlatform = competitors[0] || localPlatforms[0] || "Hireko.ai";
 
         // -------------------------------------------------------------
         // 0. SECURITY & PROMPT INJECTION CHECKS (SEC01 - SEC06)
@@ -1479,6 +1612,14 @@
                     "  * Launch certified marketplace apps for Workday and SAP SuccessFactors with bi-directional candidate status sync and automated rubric imports.",
                     "\n**Summary Takeaway:** By focusing on auditable scorecards, candidate sandboxes, and enterprise ATS connectors, Hireko directly overcomes competitor moats while maintaining its conversational AI lead."
                 ].join("\n"),
+                sources: ["https://hireko.ai"]
+            };
+        }
+
+        // Suggested / Suitable Features for Hireko
+        if (/(suggest me any feature|suggest any feature|suggest feature|suggest features|feature that suitable for hireko|features that suitable for hireko|feature suitable for hireko|features suitable for hireko|suitable for hireko|features for hireko|features should hireko|features to add to hireko|recommended features for hireko|what features are suitable for hireko|feature recommendations for hireko)/i.test(qLower)) {
+            return {
+                answer: buildSuggestedFeaturesForHireko(),
                 sources: ["https://hireko.ai"]
             };
         }
@@ -1888,6 +2029,19 @@
         }
 
         // -------------------------------------------------------------
+        // General Features Inquiry (Delivers structured points per platform instead of table)
+        const isAskingFeatures = /(what are the features|what features does|what feature does|features does|features of|list features|tell me the features|core features|key features)/i.test(qLower) || ((qLower.includes("feature") || qLower.includes("features")) && !/(table|tabular|chart|grid|vs | vs\. | vs )/i.test(qLower));
+
+        if (isAskingFeatures && !/(missing in hireko|features are missing|overcome those gaps|table|tabular|chart|grid)/i.test(qLower)) {
+            const validFeaturePlats = localPlatforms.filter(p => PLATFORM_FEATURE_BULLETS[p]);
+            if (validFeaturePlats.length) {
+                return {
+                    answer: buildFeaturesPointsResponse(validFeaturePlats),
+                    sources: getSourcesForPlatforms(validFeaturePlats)
+                };
+            }
+        }
+
         // 3. CANDIDATE EVALUATION & SCORING INTENTS
         // -------------------------------------------------------------
         if (/(evaluat|scoring|scorecard|rubric|autograd|grade|accuracy|how does it score|how does hireko score|how does hirevue score|how does it evaluate|how does hireko evaluate|interview analysis|candidate assessment)/i.test(qLower)) {
